@@ -1,21 +1,14 @@
 @extends('app')
 @section('content')
     <!-- Page title -->
-    <section id="page-title">
-        <div class="container">
-            <div class="page-title">
-                <h1>Shop</h1>
-                <span>Sidebar Version</span>
-            </div>
-            <div class="breadcrumb">
-                <ul>
-                    <li><a href="#">Home</a>
-                    </li>
-                    <li><a href="#">Shop</a>
-                    </li>
-                    <li class="active"><a href="#">Sidebar version</a>
-                    </li>
-                </ul>
+    <section class="fullscreen" data-bg-parallax="{{asset('images/banner/2.jpg')}}">
+        <div class="container container-fullscreen">
+            <div class="text-middle text-center">
+                <h1 class="text-uppercase text-lg text-light" data-animate="fadeInUp">Spring '23</h1>
+                <p class="lead text-light " data-animate="fadeInUp" data-animate-delay="600">new collection</p>
+                <span data-animate="fadeInUp" data-animate-delay="900">
+                        <a href="https://themeforest.net/item/polo-responsive-multipurpose-html5-template/13708923" class="btn">Show now</a>
+                    </span>
             </div>
         </div>
     </section>
@@ -28,8 +21,8 @@
                 <div class="content col-lg-9">
                     <div class="row m-b-20">
                         <div class="col-lg-6 p-t-10 m-b-20">
-                            <h3 class="m-b-20">A Monochromatic Spring ’15</h3>
-                            <p>Lorem ipsum dolor sit amet. Accusamus, sit, exercitationem, consequuntur, assumenda iusto eos commodi alias.</p>
+                            <h3 class="m-b-20">Trousers</h3>
+                            <p>This season, cargo pants are experiencing a fashionable comeback, and everything is in trend.</p>
                         </div>
                         <div class="col-lg-3">
                             <div class="order-select">
@@ -65,27 +58,25 @@
                     <!--Product list-->
                     <div class="shop">
                         <div class="grid-layout grid-3-columns" data-item="grid-item">
+                            @foreach($products as $product)
                             <div class="grid-item">
                                 <div class="product">
                                     <div class="product-image">
-                                        <a href="#"><img alt="Shop product image!" src="images/shop/products/1.jpg">
+                                        <a href="#"><img alt="Shop product image!" src="{{$product->image}}">
                                         </a>
-                                        <a href="#"><img alt="Shop product image!" src="images/shop/products/10.jpg">
-                                        </a>
-                                        <span class="product-new">NEW</span>
                                         <span class="product-wishlist">
-                                                <a href="#"><i class="fa fa-heart"></i></a>
+                                                <a href="#"><i class="fa  fa-heart"></i></a>
                                             </span>
                                         <div class="product-overlay">
                                             <a href="shop-product-ajax-page.html" data-lightbox="ajax">Quick View</a>
                                         </div>
                                     </div>
                                     <div class="product-description">
-                                        <div class="product-category">Women</div>
+                                        <div class="product-category">{{$product->category->name}}</div>
                                         <div class="product-title">
-                                            <h3><a href="#">Bolt Sweatshirt</a></h3>
+                                            <h3><a href="#">{{$product->name}}</a></h3>
                                         </div>
-                                        <div class="product-price"><ins>$15.00</ins>
+                                        <div class="product-price"><ins>${{$product->price}}</ins>
                                         </div>
                                         <div class="product-rate">
                                             <i class="fa fa-star"></i>
@@ -99,276 +90,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="grid-item">
-                                <div class="product">
-                                    <div class="product-image">
-                                        <a href="#"><img alt="Shop product image!" src="images/shop/products/2.jpg">
-                                        </a>
-                                        <a href="#"><img alt="Shop product image!" src="images/shop/products/6.jpg">
-                                        </a>
-                                        <span class="product-wishlist">
-                                                <a href="#"><i class="fa fa-heart"></i></a>
-                                            </span>
-                                        <div class="product-overlay">
-                                            <a href="shop-product-ajax-page.html" data-lightbox="ajax">Quick View</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-description">
-                                        <div class="product-category">Women</div>
-                                        <div class="product-title">
-                                            <h3><a href="#">Consume Tshirt</a></h3>
-                                        </div>
-                                        <div class="product-price"><ins>$39.00</ins>
-                                        </div>
-                                        <div class="product-rate">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                        </div>
-                                        <div class="product-reviews"><a href="#">3 customer reviews</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid-item">
-                                <div class="product">
-                                    <div class="product-image">
-                                        <a href="#"><img alt="Shop product image!" src="images/shop/products/3.jpg">
-                                        </a>
-                                        <a href="#"><img alt="Shop product image!" src="images/shop/products/7.jpg">
-                                        </a>
-                                        <span class="product-hot">HOT</span>
-                                        <span class="product-wishlist">
-                                                <a href="#"><i class="fa fa-heart"></i></a>
-                                            </span>
-                                        <div class="product-overlay">
-                                            <a href="shop-product-ajax-page.html" data-lightbox="ajax">Quick View</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-description">
-                                        <div class="product-category">Man</div>
-                                        <div class="product-title">
-                                            <h3><a href="#">Logo Tshirt</a></h3>
-                                        </div>
-                                        <div class="product-price"><ins>$39.00</ins>
-                                        </div>
-                                        <div class="product-rate">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                        </div>
-                                        <div class="product-reviews"><a href="#">3 customer reviews</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid-item">
-                                <div class="product">
-                                    <div class="product-image">
-                                        <a href="#"><img alt="Shop product image!" src="images/shop/products/4.jpg">
-                                        </a>
-                                        <a href="#"><img alt="Shop product image!" src="images/shop/products/9.jpg">
-                                        </a>
-                                        <span class="product-wishlist">
-                                                <a href="#"><i class="fa fa-heart"></i></a>
-                                            </span>
-                                        <div class="product-overlay">
-                                            <a href="shop-product-ajax-page.html" data-lightbox="ajax">Quick View</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-description">
-                                        <div class="product-category">Women</div>
-                                        <div class="product-title">
-                                            <h3><a href="#">Cotton Tshirt</a></h3>
-                                        </div>
-                                        <div class="product-price"><ins>$22.00</ins>
-                                        </div>
-                                        <div class="product-rate">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                        </div>
-                                        <div class="product-reviews"><a href="#">5 customer reviews</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid-item">
-                                <div class="product">
-                                    <div class="product-image">
-                                        <a href="#"><img alt="Shop product image!" src="images/shop/products/5.jpg">
-                                        </a>
-                                        <a href="#"><img alt="Shop product image!" src="images/shop/products/11.jpg">
-                                        </a>
-                                        <span class="product-wishlist">
-                                                <a href="#"><i class="fa fa-heart"></i></a>
-                                            </span>
-                                        <div class="product-overlay">
-                                            <a href="shop-product-ajax-page.html" data-lightbox="ajax">Quick View</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-description">
-                                        <div class="product-category">Man</div>
-                                        <div class="product-title">
-                                            <h3><a href="#">Grey Sweatshirt</a></h3>
-                                        </div>
-                                        <div class="product-price"><ins>$39.00</ins>
-                                        </div>
-                                        <div class="product-rate">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <div class="product-reviews"><a href="#">5 customer reviews</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid-item">
-                                <div class="product">
-                                    <div class="product-image">
-                                        <a href="#"><img alt="Shop product image!" src="images/shop/products/6.jpg">
-                                        </a>
-                                        <a href="#"><img alt="Shop product image!" src="images/shop/products/2.jpg">
-                                        </a>
-                                        <span class="product-wishlist">
-                                                <a href="#"><i class="fa fa-heart"></i></a>
-                                            </span>
-                                        <div class="product-overlay">
-                                            <a href="shop-product-ajax-page.html" data-lightbox="ajax">Quick View</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-description">
-                                        <div class="product-category">Women</div>
-                                        <div class="product-title">
-                                            <h3><a href="#">Pocket Tshirt</a></h3>
-                                        </div>
-                                        <div class="product-price">
-                                            <del>$19.00</del><ins>$15.00</ins>
-                                        </div>
-                                        <div class="product-rate">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="product-reviews"><a href="#">5 customer reviews</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid-item">
-                                <div class="product">
-                                    <div class="product-image">
-                                        <a href="#"><img alt="Shop product image!" src="images/shop/products/7.jpg">
-                                        </a>
-                                        <a href="#"><img alt="Shop product image!" src="images/shop/products/3.jpg">
-                                        </a>
-                                        <span class="product-wishlist">
-                                                <a href="#"><i class="fa fa-heart"></i></a>
-                                            </span>
-                                        <div class="product-overlay">
-                                            <a href="shop-product-ajax-page.html" data-lightbox="ajax">Quick View</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-description">
-                                        <div class="product-category">Man</div>
-                                        <div class="product-title">
-                                            <h3><a href="#">Dark Tshirt</a></h3>
-                                        </div>
-                                        <div class="product-price"><ins>$26.00</ins>
-                                        </div>
-                                        <div class="product-rate">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                        </div>
-                                        <div class="product-reviews"><a href="#">5 customer reviews</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid-item">
-                                <div class="product">
-                                    <div class="product-image">
-                                        <a href="#"><img alt="Shop product image!" src="images/shop/products/8.jpg">
-                                        </a>
-                                        <a href="#"><img alt="Shop product image!" src="images/shop/products/1.jpg">
-                                        </a>
-                                        <span class="product-sale">SALE</span>
-                                        <span class="product-sale-off">50% Off</span>
-                                        <span class="product-wishlist">
-                                                <a href="#"><i class="fa fa-heart"></i></a>
-                                            </span>
-                                        <div class="product-overlay">
-                                            <a href="shop-product-ajax-page.html" data-lightbox="ajax">Quick View</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-description">
-                                        <div class="product-category">Women</div>
-                                        <div class="product-title">
-                                            <h3><a href="#">Nature Tshirt</a></h3>
-                                        </div>
-                                        <div class="product-price">
-                                            <del>$19.00</del><ins>$15.00</ins>
-                                        </div>
-                                        <div class="product-rate">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                        </div>
-                                        <div class="product-reviews"><a href="#">5 customer reviews</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid-item">
-                                <div class="product">
-                                    <div class="product-image">
-                                        <a href="#"><img alt="Shop product image!" src="images/shop/products/11.jpg">
-                                        </a>
-                                        <a href="#"><img alt="Shop product image!" src="images/shop/products/5.jpg">
-                                        </a>
-                                        <span class="product-hot">HOT</span>
-                                        <span class="product-wishlist">
-                                                <a href="#"><i class="fa fa-heart"></i></a>
-                                            </span>
-                                        <div class="product-overlay">
-                                            <a href="shop-product-ajax-page.html" data-lightbox="ajax">Quick View</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-description">
-                                        <div class="product-category">Man</div>
-                                        <div class="product-title">
-                                            <h3><a href="#">Logo Tshirt</a></h3>
-                                        </div>
-                                        <div class="product-price"><ins>$39.00</ins>
-                                        </div>
-                                        <div class="product-rate">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                        </div>
-                                        <div class="product-reviews"><a href="#">3 customer reviews</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                         <hr>
                         <!-- Pagination -->
@@ -392,35 +114,26 @@
                     <div class="widget clearfix widget-archive">
                         <h4 class="widget-title">Product categories</h4>
                         <ul class="list list-lines">
-                            <li><a href="#">Bags</a> <span class="count">(6)</span>
+                            @foreach($category as $categories)
+                                <li><a href="#">{{$categories->name}}</a>
                             </li>
-                            <li><a href="#">Jeans</a> <span class="count">(8)</span>
-                            </li>
-                            <li><a href="#">Shoes</a> <span class="count">(7)</span>
-                            </li>
-                            <li><a href="#">Sweaters</a> <span class="count">(7)</span>
-                            </li>
-                            <li><a href="#">T-Shirts</a> <span class="count">(9)</span>
-                            </li>
-                            <li><a href="#">Tops</a> <span class="count">(10)</span>
-                            </li>
-                            <li><a href="#">Women</a> <span class="count">(25)</span>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="widget clearfix widget-shop">
-                        <h4 class="widget-title">Latest Products</h4>
+                        <h4 class="widget-title">Latest Product</h4>
+                        @foreach($latestProducts as $latestProduct)
                         <div class="product">
                             <div class="product-image">
-                                <a href="#"><img src="images/shop/products/10.jpg" alt="Shop product image!">
+                                <a href="#"><img src="{{$latestProduct->image}}" alt="Shop product image!">
                                 </a>
                             </div>
                             <div class="product-description">
-                                <div class="product-category">Women</div>
+                                <div class="product-category">{{$latestProduct->category->name}}</div>
                                 <div class="product-title">
-                                    <h3><a href="#">Bolt Sweatshirt</a></h3>
+                                    <h3><a href="#">{{$latestProduct->name}}</a></h3>
                                 </div>
-                                <div class="product-price"><del>$30.00</del><ins>$15.00</ins>
+                                <div class="product-price"><del>${{$latestProduct->price}}</del><ins>$15.00</ins>
                                 </div>
                                 <div class="product-rate">
                                     <i class="fa fa-star"></i>
@@ -431,48 +144,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="product">
-                            <div class="product-image">
-                                <a href="#"><img src="images/shop/products/6.jpg" alt="Shop product image!">
-                                </a>
-                            </div>
-                            <div class="product-description">
-                                <div class="product-category">Women</div>
-                                <div class="product-title">
-                                    <h3><a href="#">Consume Tshirt</a></h3>
-                                </div>
-                                <div class="product-price"><ins>$39.00</ins>
-                                </div>
-                                <div class="product-rate">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product">
-                            <div class="product-image">
-                                <a href="#"><img src="images/shop/products/7.jpg" alt="Shop product image!">
-                                </a>
-                            </div>
-                            <div class="product-description">
-                                <div class="product-category">Man</div>
-                                <div class="product-title">
-                                    <h3><a href="#">Logo Tshirt</a></h3>
-                                </div>
-                                <div class="product-price"><ins>$39.00</ins>
-                                </div>
-                                <div class="product-rate">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
-                                </div>
-                            </div>
-                        </div>
+                            @endforeach
+
                     </div>
                     <div class="widget clearfix widget-tags">
                         <h4 class="widget-title">Tags</h4>
@@ -489,18 +162,6 @@
                             <a href="#">jQuery</a>
                         </div>
                     </div>
-                    <div class="widget clearfix widget-newsletter">
-                        <form class="form-inline" method="get" action="#">
-                            <h4 class="widget-title">Subscribe for Latest Offers</h4>
-                            <small>Subscribe to our Newsletter to get Sales Offers &amp; Coupon Codes etc.</small>
-                            <div class="input-group">
-                                <input type="email" placeholder="Enter your Email" class="form-control required email" name="widget-subscribe-form-email" aria-required="true">
-                                <span class="input-group-btn">
-                                        <button type="submit" class="btn"><i class="fa fa-paper-plane"></i></button>
-                                    </span>
-                            </div>
-                        </form>
-                    </div>
                 </div>
                 <!-- end: Sidebar-->
             </div>
@@ -511,38 +172,19 @@
     <section class="background-grey p-t-40 p-b-0">
         <div class="container">
             <div class="row">
+                @foreach($deliveries as $delivery)
                 <div class="col-lg-4">
                     <div class="icon-box effect small clean">
                         <div class="icon">
                             <a href="#"><i class="fa fa-gift"></i></a>
                         </div>
-                        <h3>Free shipping on orders $60+</h3>
-                        <p>Order more than 60$ and you will get free shippining Worldwide. More info.</p>
+                        <h3>{{$delivery->title}}</h3>
+                        <p>{{$delivery->description}}</p>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="icon-box effect small clean">
-                        <div class="icon">
-                            <a href="#"><i class="fa fa-plane"></i></a>
-                        </div>
-                        <h3>Worldwide delivery</h3>
-                        <p>We deliver to the following countries: USA, Canada, Europe, Australia</p>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="icon-box effect small clean">
-                        <div class="icon">
-                            <a href="#"><i class="fa fa-history"></i></a>
-                        </div>
-                        <h3>60 days money back guranty!</h3>
-                        <p>Not happy with our product, feel free to return it, we will refund 100% your money!</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
     <!-- end: DELIVERY INFO -->
 @endsection
-
-
-

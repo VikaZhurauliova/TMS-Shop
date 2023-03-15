@@ -1,12 +1,11 @@
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />    <meta name="author" content="INSPIRO" />
     <meta name="description" content="Themeforest Template Polo, html template">
-    <link rel="icon" type="image/png" href="{{"/images/favicon.png"}}">
+    <link rel="icon" type="image/png" href="{{route('main')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Document title -->
     <title>POLO | The Multi-Purpose HTML5 Template</title>
@@ -83,7 +82,6 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="{{route('sales')}}">Sale</a></li>
                                 <li class="dropdown"><a href="{{route('about')}}">About</a>
                                 </li>
                                 <li class="dropdown mega-menu-item"><a href="{{route('contacts')}}">Contacts</a>

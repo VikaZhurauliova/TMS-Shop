@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contacts;
+
 class ContactsController
 {
     public function contacts()
     {
-        return view('contacts');
+        $contacts = Contacts::all();
+        return view('contacts', [
+            'contacts' => $contacts
+        ]);
     }
 }

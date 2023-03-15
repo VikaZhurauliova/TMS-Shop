@@ -17,18 +17,11 @@
                     <div class="row m-t-40">
                         <div class="col-lg-6">
                             <address>
-                                <strong>Polo, Inc.</strong><br>
-                                795 Folsom Ave, Suite 600<br>
-                                San Francisco, CA 94107<br>
-                                <abbr title="Phone">P:</h4> (123) 456-7890
-                            </address>
-                        </div>
-                        <div class="col-lg-6">
-                            <address>
-                                <strong>Polo Office</strong><br>
-                                795 Folsom Ave, Suite 600<br>
-                                San Francisco, CA 94107<br>
-                                <abbr title="Phone">P:</h4> (123) 456-7890
+                                @foreach($contacts as $contact)
+                                <strong>{{$contact->name}}</strong><br>
+                                    {{$contact->address}}<br>
+                                <abbr title="Phone">P:</h4> {{$contact->phone}}<br><br>
+                                @endforeach
                             </address>
                         </div>
                     </div>

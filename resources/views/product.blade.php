@@ -9,9 +9,9 @@
                         <div class="product-image">
                             <!-- Carousel slider -->
                             <div class="carousel dots-inside dots-dark arrows-visible" data-items="1" data-loop="true" data-autoplay="true" data-animate-in="fadeIn" data-animate-out="fadeOut" data-autoplay="2500" data-lightbox="gallery">
-                                <a href="images/shop/products/product-large.jpg" data-lightbox="image" title="Shop product image!"><img alt="Shop product image!" src="images/shop/products/1.jpg">
+                                <a href="{{asset ('/images/trousers/1.jpg')}}" data-lightbox="image" title="Shop product image!"><img alt="Shop product image!" src="images/shop/products/1.jpg">
                                 </a>
-                                <a href="images/shop/products/product-large.jpg" data-lightbox="image" title="Shop product image!"><img alt="Shop product image!" src="images/shop/products/2.jpg">
+                                <a href="{{asset ('/images/trousers/1.jpg')}}" data-lightbox="image" title="Shop product image!"><img alt="Shop product image!" src="images/shop/products/2.jpg">
                                 </a>
                             </div>
                             <!-- Carousel slider -->
@@ -174,30 +174,8 @@
                                 </div>
                                 <div class="comment-list">
                                     <!-- Comment -->
-                                    <div class="comment" id="comment-1">
-                                        <div class="image"><img alt="" src="images/blog/author.jpg" class="avatar">
-                                        </div>
-                                        <div class="text">
-                                            <div class="product-rate">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-half-o"></i>
-                                            </div>
-                                            <h5 class="name">John Doe</h5>
-                                            <span class="comment_date">Posted at 15:32h, 06 December</span>
-                                            <a class="comment-reply-link" href="#">Reply</a>
-                                            <div class="text_holder">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                    industry. Lorem Ipsum has been the industry's standard dummy
-                                                    text ever since the 1500s.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end: Comment -->
-                                    <!-- Comment -->
                                     <div class="comment" id="comment-1-1">
+                                        @foreach($reviews as $review)
                                         <div class="image"><img alt="" src="images/blog/author2.jpg" class="avatar">
                                         </div>
                                         <div class="text">
@@ -212,33 +190,10 @@
                                             <span class="comment_date">Posted at 15:32h, 06 December</span>
                                             <a class="comment-reply-link" href="#">Reply</a>
                                             <div class="text_holder">
-                                                <p>It is a long established fact that a reader will be distracted by
-                                                    the readable content.</p>
+                                                <p>{{$review->text}}</p>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- end: Comment -->
-                                    <!-- Comment -->
-                                    <div class="comment" id="comment-1-2">
-                                        <div class="image"><img alt="" src="images/blog/author3.jpg" class="avatar">
-                                        </div>
-                                        <div class="text">
-                                            <div class="product-rate">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-half-o"></i>
-                                            </div>
-                                            <h5 class="name">John Doe</h5>
-                                            <span class="comment_date">Posted at 15:32h, 06 December</span>
-                                            <a class="comment-reply-link" href="#">Reply</a>
-                                            <div class="text_holder">
-                                                <p>There are many variations of passages of Lorem Ipsum available,
-                                                    but the majority have suffered alteration in some form, by
-                                                    injected humour.</p>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                     <!-- end: Comment -->
                                 </div>
@@ -467,33 +422,17 @@
     <section class="background-grey p-t-40 p-b-0">
         <div class="container">
             <div class="row">
+                @foreach($deliveries as $delivery)
                 <div class="col-lg-4">
                     <div class="icon-box effect small clean">
                         <div class="icon">
                             <a href="#"><i class="fa fa-gift"></i></a>
                         </div>
-                        <h3>Free shipping on orders $60+</h3>
-                        <p>Order more than 60$ and you will get free shippining Worldwide. More info.</p>
+                        <h3>{{$delivery->title}}</h3>
+                        <p>{{$delivery->description}}</p>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="icon-box effect small clean">
-                        <div class="icon">
-                            <a href="#"><i class="fa fa-plane"></i></a>
-                        </div>
-                        <h3>Worldwide delivery</h3>
-                        <p>We deliver to the following countries: USA, Canada, Europe, Australia</p>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="icon-box effect small clean">
-                        <div class="icon">
-                            <a href="#"><i class="fa fa-history"></i></a>
-                        </div>
-                        <h3>60 days money back guranty!</h3>
-                        <p>Not happy with our product, feel free to return it, we will refund 100% your money!</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
