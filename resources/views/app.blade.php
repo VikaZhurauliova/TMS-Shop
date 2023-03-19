@@ -66,26 +66,24 @@
                     <div class="container">
                         <nav>
                             <ul>
-                                <li class="dropdown"><a href="{{route('shop')}}">Shop</a>
+                                <li class="dropdown"><a href="{{route('products.index')}}">Shop</a>
                                     <ul class="dropdown-menu">
-                                        <li class="dropdown-submenu"><a href="#">Outerwear</a>
+                                        @foreach($categories as $category)
+                                        <li class="dropdown-submenu"><a href="{{ route('products.category', ['category' => $category->id]) }}">{{ $category->name }}</a>
                                         </li>
-                                        <li class="dropdown-submenu"><a href="#">Trousers</a>
-                                        </li>
-                                        <li class="dropdown-submenu"><a href="#">Dresses<span class="badge badge-danger">NEW</span></a>
-                                        </li>
-                                        <li class="dropdown-submenu"><a href="#">Hoodies</a>
-                                        </li>
-                                        <li class="dropdown-submenu"><a href="#">Skirts<span class="badge badge-danger">NEW</span></a>
-                                        </li>
-                                        <li class="dropdown-submenu"><a href="#">Sweaters</a>
-                                        </li>
+                                        @endforeach
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="{{route('about')}}">About</a>
-                                </li>
-                                <li class="dropdown mega-menu-item"><a href="{{route('contacts')}}">Contacts</a>
-                                </li>
+                                <li><a href="{{ route('about') }}">About us</a></li>
+                                <li><a href="{{ route('contacts') }}">Contacts</a></li>
+                                @auth
+                                    <li><a href="{{ route('account.show') }}">My account</a></li>
+                                    <li><a href="{{ route('auth.logout') }}">Logout</a></li>
+                                @endauth
+                                @guest
+                                    <li><a href="{{ route('auth.login') }}">Login</a></li>
+                                    <li><a href="{{ route('auth.register') }}">Register</a></li>
+                                @endguest
                             </ul>
                         </nav>
                     </div>

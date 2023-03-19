@@ -1,14 +1,20 @@
 @extends('app')
 @section('content')
+
     <!-- Page title -->
-    <section class="fullscreen" data-bg-parallax="{{asset('images/banner/2.jpg')}}">
-        <div class="container container-fullscreen">
-            <div class="text-middle text-center">
-                <h1 class="text-uppercase text-lg text-light" data-animate="fadeInUp">Spring '23</h1>
-                <p class="lead text-light " data-animate="fadeInUp" data-animate-delay="600">new collection</p>
-                <span data-animate="fadeInUp" data-animate-delay="900">
-                        <a href="https://themeforest.net/item/polo-responsive-multipurpose-html5-template/13708923" class="btn">Show now</a>
-                    </span>
+    <section id="page-title">
+        <div class="container">
+            <div class="page-title">
+                <h1>Shop</h1>
+                <span>Sidebar Version</span>
+            </div>
+            <div class="breadcrumb">
+                <ul>
+                    <li><a href="{{ route('main') }}">Home</a>
+                    </li>
+                    <li><a href="{{route('products.index')}}">Shop</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
@@ -21,8 +27,8 @@
                 <div class="content col-lg-9">
                     <div class="row m-b-20">
                         <div class="col-lg-6 p-t-10 m-b-20">
-                            <h3 class="m-b-20">Trousers</h3>
-                            <p>This season, cargo pants are experiencing a fashionable comeback, and everything is in trend.</p>
+                            <h3 class="m-b-20">Spring ’23</h3>
+                            <p>We can surprise you!</p>
                         </div>
                         <div class="col-lg-3">
                             <div class="order-select">
@@ -59,16 +65,19 @@
                     <div class="shop">
                         <div class="grid-layout grid-3-columns" data-item="grid-item">
                             @foreach($products as $product)
-                            <div class="grid-item">
+                                <div class="grid-item">
                                 <div class="product">
                                     <div class="product-image">
-                                        <a href="#"><img alt="Shop product image!" src="{{$product->image}}">
+                                        <a href="{{ route('products.show', ['product' => $product->id]) }}"><img alt="Shop product image!" src="{{$product->image}}">
                                         </a>
+{{--                                        @if(Carbon\Carbon::parse($product->created_at)->diffInDays(now()) > 3)
+                                            <span class="product-new">NEW</span>
+                                        @endif--}}
                                         <span class="product-wishlist">
-                                                <a href="#"><i class="fa  fa-heart"></i></a>
+                                                <a href="#"><i class="fa fa-heart"></i></a>
                                             </span>
                                         <div class="product-overlay">
-                                            <a href="shop-product-ajax-page.html" data-lightbox="ajax">Quick View</a>
+                                            <a href="#" data-lightbox="ajax">Quick View</a>
                                         </div>
                                     </div>
                                     <div class="product-description">
@@ -114,26 +123,26 @@
                     <div class="widget clearfix widget-archive">
                         <h4 class="widget-title">Product categories</h4>
                         <ul class="list list-lines">
-                            @foreach($category as $categories)
-                                <li><a href="#">{{$categories->name}}</a>
-                            </li>
+                            @foreach($categories as $category)
+                                <li><a href="{{ route('products.category', ['category' => $category->id]) }}">{{ $category->name }}</a> <span class="count">( {{ $category->count}} )</span>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
                     <div class="widget clearfix widget-shop">
-                        <h4 class="widget-title">Latest Product</h4>
-                        @foreach($latestProducts as $latestProduct)
+                        <h4 class="widget-title">Latest Products</h4>
+                        @foreach($latestProducts as $product)
                         <div class="product">
                             <div class="product-image">
-                                <a href="#"><img src="{{$latestProduct->image}}" alt="Shop product image!">
+                                <a href="{{ route('products.show', ['product' => $product->id]) }}"><img src="{{$product->image}}" alt="{{ $product->name }}">
                                 </a>
                             </div>
                             <div class="product-description">
-                                <div class="product-category">{{$latestProduct->category->name}}</div>
+                                <div class="product-category">{{ $product->category?->name }}</div>
                                 <div class="product-title">
-                                    <h3><a href="#">{{$latestProduct->name}}</a></h3>
+                                    <h3><a href="{{ route('products.show', ['product' => $product->id]) }}">{{$product->name}}</a></h3>
                                 </div>
-                                <div class="product-price"><del>${{$latestProduct->price}}</del><ins>$15.00</ins>
+                                <div class="product-price"><del>${{$product->price}}</del>{{--<ins>$15.00</ins>--}}
                                 </div>
                                 <div class="product-rate">
                                     <i class="fa fa-star"></i>
@@ -144,23 +153,27 @@
                                 </div>
                             </div>
                         </div>
-                            @endforeach
-
+                        @endforeach
                     </div>
                     <div class="widget clearfix widget-tags">
                         <h4 class="widget-title">Tags</h4>
                         <div class="tags">
-                            <a href="#">Design</a>
-                            <a href="#">Portfolio</a>
-                            <a href="#">Digital</a>
-                            <a href="#">Branding</a>
-                            <a href="#">HTML</a>
-                            <a href="#">Clean</a>
-                            <a href="#">Peace</a>
-                            <a href="#">Love</a>
-                            <a href="#">CSS3</a>
-                            <a href="#">jQuery</a>
+                            @foreach($tags as $tag)
+                                <a href="#">{{ $tag->title }}</a>
+                            @endforeach
                         </div>
+                    </div>
+                    <div class="widget clearfix widget-newsletter">
+                        <form class="form-inline" method="get" action="#">
+                            <h4 class="widget-title">Subscribe for Latest Offers</h4>
+                            <small>Subscribe to our Newsletter to get Sales Offers &amp; Coupon Codes etc.</small>
+                            <div class="input-group">
+                                <input type="email" placeholder="Enter your Email" class="form-control required email" name="widget-subscribe-form-email" aria-required="true">
+                                <span class="input-group-btn">
+                                        <button type="submit" class="btn"><i class="fa fa-paper-plane"></i></button>
+                                    </span>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <!-- end: Sidebar-->
@@ -188,3 +201,5 @@
     </section>
     <!-- end: DELIVERY INFO -->
 @endsection
+
+

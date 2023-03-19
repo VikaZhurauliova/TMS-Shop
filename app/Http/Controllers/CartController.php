@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+
 class CartController
 {
     public function cart()
     {
-        return view('cart');
+        $categories = Category::all();
+        return view('cart', [
+            'categories' => $categories
+        ]);
     }
 }

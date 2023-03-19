@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\Category;
+
 class AboutController
 {
-public function about()
+    public function about()
     {
-        return view('about');
+        $categories = Category::all();
+        return view('about', [
+            'categories' => $categories
+        ]);
     }
 }

@@ -12,17 +12,24 @@ class Product extends Model
 {
     use HasFactory;
 
+    public function images(): HasMany
+    {
+        return $this->hasMany(ProductImage::class);
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
-    public function tags() :BelongsToMany
+
+    public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
     }
-    public function reviews() :HasMany
+
+    public function reviews(): HasMany
     {
-        return $this->hasMany()(Product_review::class);
+        return $this->hasMany(ProductReview::class);
     }
 
 }
