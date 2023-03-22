@@ -36,8 +36,11 @@ Route::group(['controller' => AuthController::class], function () {
 Route::get('/account', [AccountController::class, 'account'])->name('account');
 Route::post('/account', [AccountController::class, 'updateAccount'])->name('account.update');
 
-Route::get('/cart', [CartController::class, 'cart'])->name('cart');
 Route::get('/contacts', [ContactsController::class, 'contacts'])->name('contacts');
+Route::post('/contacts', [ContactsController::class, 'sendContacts'])->name('send.contacts');
+
+
+Route::get('/cart', [CartController::class, 'cart'])->name('cart');
 Route::get('/about', [AboutController::class, 'about'])->name('about');
 
 

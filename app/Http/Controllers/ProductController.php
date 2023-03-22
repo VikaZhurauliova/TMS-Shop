@@ -35,6 +35,8 @@ class ProductController
 
         $latestProducts = Product::query()->where('is_active', 1)->orderBy('created_at', 'DESC')->take(3)->get();
 
+
+
         $tags = Tag::all();
         $deliveries = Delivery::all();
         return view('products', [
@@ -42,22 +44,30 @@ class ProductController
             'categories' => $categories,
             'latestProducts' => $latestProducts,
             'deliveries' => $deliveries,
-            'tags' => $tags
+            'tags' => $tags,
         ]);
     }
 
     public function category()
     {
-        $products = Product::query()->where('is_active', 1)->get();
 
+     /*   $categoryProduct = Product::query()->where('category_id', $this->category())->get();*/
+        $products = Product::query()->where('is_active', 1)->get();
         $categories = Category::all();
 
         return view('category', [
             'categories' => $categories,
             'products' => $products
+/*            'categoryProduct' => $categoryProduct*/
         ]);
     }
+
 }
+
+
+
+
+
 /*
 public function product()
     {
