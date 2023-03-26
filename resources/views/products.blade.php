@@ -33,7 +33,7 @@
                             <div class="order-select">
                                 <h6>Sort by</h6>
                                 <form method="GET" action="{{ route('products.index') }}">
-                                    <select class="form-control">
+                                    <select name= 'sort' class="form-control">
                                         <option value="new">Sort by newness</option>
                                         <option value="rating">Rating</option>
                                         <option value="price-asc">Sort by price: low to high</option>
@@ -69,7 +69,10 @@
                                             <span class="product-new">NEW</span>
                                         @endif--}}
                                         <span class="product-wishlist">
-                                                <a href="#"><i class="fa fa-heart"></i></a>
+                                                <form action="{{ route('wishlist.add', ['product' => $product->id]) }}" method="POST">
+                                                    @csrf
+                                                        <a href="#" onclick="this.parentNode.submit()"><i class="fa fa-heart"></i></a>
+                                                </form>
                                             </span>
                                         <div class="product-overlay">
                                             <a href="#" data-lightbox="ajax">Quick View</a>
