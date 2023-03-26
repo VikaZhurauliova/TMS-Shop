@@ -31,5 +31,17 @@ class Product extends Model
     {
         return $this->hasMany(ProductReview::class);
     }
+    public function averageReviews(): float
+    {
+        $reviews = $this->reviews;
+        $averageStar = 0;
+
+        /** @var ProductReview $review */
+        foreach ($reviews as $review) {
+            $averageStar += $review->star_count;
+        }
+
+        return (count($reviews) == 0) ? 0 : round($averageStar / count($reviews));
+    }
 
 }

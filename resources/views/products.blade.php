@@ -80,16 +80,21 @@
                                         <div class="product-title">
                                             <h3><a href="#">{{$product->name}}</a></h3>
                                         </div>
-                                        <div class="product-price"><ins>${{$product->price}}</ins>
+                                        <div class="product-price">
+                                            <ins>
+                                                @if($product->sale_price)
+                                                    ${{ $product->sale_price }}
+                                                @else
+                                                    ${{ $product->price }}
+                                                @endif
+                                            </ins>
                                         </div>
                                         <div class="product-rate">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
+                                            @for($i = 0; $i < $product->averageReviews(); $i++)
+                                                <i class="fa fa-star"></i>
+                                            @endfor
                                         </div>
-                                        <div class="product-reviews"><a href="#">6 customer reviews</a>
+                                        <div class="product-reviews"><a href="#">{{ count($product->reviews) }} customer reviews</a>
                                         </div>
                                     </div>
                                 </div>
@@ -140,11 +145,9 @@
                                 <div class="product-price"><del>${{$product->price}}</del>{{--<ins>$15.00</ins>--}}
                                 </div>
                                 <div class="product-rate">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
+                                    @for($i = 0; $i < $product->averageReviews(); $i++)
+                                        <i class="fa fa-star"></i>
+                                    @endfor
                                 </div>
                             </div>
                         </div>

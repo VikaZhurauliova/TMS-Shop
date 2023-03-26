@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -19,16 +21,23 @@ class AuthController extends Controller
         ]);
     }
 
-    public function login(Request $request)
+
+    public function getRegisterPage()
     {
-        $credentials = [
-            'email' => $request->input('email'),
-            'password' => $request->input('password')
-        ];
+        $categories = Category::all();
+        return view('auth.register',[
+            'categories' => $categories
+        ]);
+    }
 
-        $isRemember = $request->input('remember') == 'on';
+    public function login(LoginRequest $request)
+    {
+        $validated = $request->validated();
 
-        if (Auth::attempt($credentials, $isRemember)) {
+        if (Auth::attempt([
+            'email' => $validated['email'],
+            'password' => $validated['password']
+        ], $validated['remember'] == 'on')) {
             $request->session()->regenerate();
 
             return redirect()->route('main');
@@ -39,31 +48,21 @@ class AuthController extends Controller
         ]);
     }
 
-    public function getRegisterPage()
+    public function register(RegisterRequest $request)
     {
-        $categories = Category::all();
-        return view('auth.register',[
-            'categories' => $categories
-        ]);
-    }
-
-    public function register(Request $request)
-    {
-
-        $name = $request->input('name');
-        $password = $request->input('password');
-        $email = $request->input('email');
+        $validated = $request->validated();
 
         $user = User::create([
-            'name' => $name,
-            'email' => $email,
-            'password' => Hash::make($password)
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password'])
         ]);
 
         Auth::login($user);
 
         return redirect()->route('main');
     }
+
 
     public function logout(Request $request)
     {
