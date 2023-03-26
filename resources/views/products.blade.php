@@ -6,7 +6,6 @@
         <div class="container">
             <div class="page-title">
                 <h1>Shop</h1>
-                <span>Sidebar Version</span>
             </div>
             <div class="breadcrumb">
                 <ul>
@@ -33,14 +32,11 @@
                         <div class="col-lg-3">
                             <div class="order-select">
                                 <h6>Sort by</h6>
-                                <p>Showing 1&ndash;12 of 25 results</p>
-                                <form method="get">
+                                <form method="GET" action="{{ route('products.index') }}">
                                     <select class="form-control">
-                                        <option selected="selected" value="order">Default sorting</option>
-                                        <option value="popularity">Sort by popularity</option>
-                                        <option value="rating">Sort by average rating</option>
-                                        <option value="date">Sort by newness</option>
-                                        <option value="price">Sort by price: low to high</option>
+                                        <option value="new">Sort by newness</option>
+                                        <option value="rating">Rating</option>
+                                        <option value="price-asc">Sort by price: low to high</option>
                                         <option value="price-desc">Sort by price: high to low</option>
                                     </select>
                                 </form>
@@ -49,8 +45,7 @@
                         <div class="col-lg-3">
                             <div class="order-select">
                                 <h6>Sort by Price</h6>
-                                <p>From 0 - 190$</p>
-                                <form method="get">
+                                <form method="GET">
                                     <select class="form-control">
                                         <option selected="selected" value="">0$ - 50$</option>
                                         <option value="">51$ - 90$</option>

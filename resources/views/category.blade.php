@@ -13,7 +13,7 @@
                     </li>
                     <li><a href="{{route('products.index')}}">Shop</a>
                     </li>
-                    <li class="active"><a href="#">Women</a>
+                    <li class="active"><a href="#">{{$category->name}}</a>
                     </li>
 
 
@@ -81,11 +81,11 @@
                                 </div>
                             </div>
                             <div class="product-description">
-                                <div class="product-category">{{$product?->category->name}}</div>
+                                <div class="product-category">{{$category->name}}</div>
                                 <div class="product-title">
-                                    <h3><a href="#">{{$product->name}}</a></h3>
+                                    <h3><a href="#">{{$category->product?->name}}</a></h3>
                                 </div>
-                                <div class="product-price"><ins>{{$product->price}}</ins>
+                                <div class="product-price"><ins>{{$category->product?->price}}</ins>
                                 </div>
                                 <div class="product-rate">
                                     <i class="fa fa-star"></i>

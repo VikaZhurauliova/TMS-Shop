@@ -22,15 +22,19 @@
                                 </div>
                                 <div class="col-lg-12 form-group">
                                     <label class="sr-only">Name</label>
-                                    <input type="text" name="name" placeholder="Name" class="form-control">
+                                    <input value="{{ old('name') }}"type="text" name="name" placeholder="Name" class="form-control">
                                 </div>
                                 <div class="col-lg-12 form-group">
                                     <label class="sr-only">Email</label>
-                                    <input type="email" name="email" placeholder="Email" class="form-control" required>
+                                    <input value="{{ old('email') }}" type="email" name="email" placeholder="Email" class="form-control" required>
                                 </div>
                                 <div class="col-lg-12 form-group">
                                     <label class="sr-only">Password</label>
                                     <input type="password" name="password" placeholder="Password" class="form-control" required>
+                                </div>
+                                <div class="col-lg-12 form-group">
+                                    <label class="sr-only">Confirm password</label>
+                                    <input type="password" name="password_confirmation" placeholder="Password confirm" class="form-control" required>
                                 </div>
                                 <div class="col-lg-12 form-group">
                                     <button class="btn" type="submit">Register New Account </button>

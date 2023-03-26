@@ -14,17 +14,17 @@
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="name">Name</label>
-                                    <input type="text" aria-required="true" name="name" required class="form-control required name" placeholder="Enter your Name">
+                                    <input value="{{ old('name') }}" type="text" aria-required="true" name="name" required class="form-control required name" placeholder="Enter your Name">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="email">Email</label>
-                                    <input type="email" aria-required="true" name="email" required class="form-control required email" placeholder="Enter your Email">
+                                    <input value="{{ old('email') }}" type="email" aria-required="true" name="email" required class="form-control required email" placeholder="Enter your Email">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <label for="subject">Your Subject</label>
-                                    <input type="text" name="subject" required class="form-control required" placeholder="Subject...">
+                                    <input value="{{ old('subject') }}" type="text" name="subject" required class="form-control required" placeholder="Subject...">
                                 </div>
                             </div>
                             <div class="form-group">

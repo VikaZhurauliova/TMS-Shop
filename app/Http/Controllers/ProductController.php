@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Delivery;
 use App\Models\Product;
 use App\Models\Tag;
+use App\Services\ProductService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
@@ -21,9 +23,9 @@ class ProductController extends Controller
         ]);
     }
 
-    public function products()
+    public function products (Request $request, ProductService $productService)
     {
-        $products = Product::query()->where('is_active', 1)->get();
+        $products = $productService->getProducts($request->all());
 
         $categories = DB::table('categories')
             ->selectRaw('categories.id, count(categories.id) as count, categories.name as name')
@@ -33,10 +35,9 @@ class ProductController extends Controller
 
         $latestProducts = Product::query()->where('is_active', 1)->orderBy('created_at', 'DESC')->take(3)->get();
 
-
-
-        $tags = Tag::all();
+        $tags = Tag::query()->where('is_active', 1)->orderBy('created_at', 'DESC')->take(6)->get();
         $deliveries = Delivery::all();
+
         return view('products', [
             'products' => $products,
             'categories' => $categories,
@@ -48,8 +49,10 @@ class ProductController extends Controller
 
     public function category( Category $category)
     {
+        $products = $category->orderBy('created_at')->paginate(12);
         return view('category', [
-
+            'category' => $category,
+            'products' => $products,
         ]);
     }
 
