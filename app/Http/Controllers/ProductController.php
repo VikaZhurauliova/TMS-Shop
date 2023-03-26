@@ -10,16 +10,14 @@ use App\Models\Tag;
 use Illuminate\Support\Facades\DB;
 
 
-class ProductController
+class ProductController extends Controller
 {
     public function product(Product $product)
     {
-        $categories = Category::all();
         $deliveries = Delivery::all();
         return view('product', [
             'product' => $product,
             'deliveries' =>$deliveries,
-            'categories' => $categories
         ]);
     }
 
@@ -48,56 +46,12 @@ class ProductController
         ]);
     }
 
-    public function category()
+    public function category( Category $category)
     {
-
-     /*   $categoryProduct = Product::query()->where('category_id', $this->category())->get();*/
-        $products = Product::query()->where('is_active', 1)->get();
-        $categories = Category::all();
-
         return view('category', [
-            'categories' => $categories,
-            'products' => $products
-/*            'categoryProduct' => $categoryProduct*/
+
         ]);
     }
 
 }
 
-
-
-
-
-/*
-public function product()
-    {
-        {
-            $products = Product::query()->where('is_active', 1)->get();
-            $category = Category::where('is_active', 1)->get();
-            $deliveries = Delivery::all();
-            $reviews = ProductReview::where('product_id', 1)->get();
-
-            return view('product', [
-
-                'products' => $products,
-                'category' => $category,
-                'deliveries' => $deliveries,
-                'reviews' => $reviews
-            ]);
-        }
-    }
-}
-/*public function shop()
-{
-    $category = Category::where('is_active', 1)->get();
-    $deliveries = Delivery::all();
-    $products = Product::query()->where('category_id', 6)->get();
-    $latestProducts = Product::query()->where('is_active', 1)->orderBy('created_at', 'DESC')->take(3)->get();
-
-    return view('shop', [
-        'products' => $products,
-        'category' => $category,
-        'deliveries' => $deliveries,
-        'latestProducts' => $latestProducts
-    ]);
-}*/

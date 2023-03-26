@@ -23,6 +23,7 @@ class AccountController extends Controller
 
     public function updateAccount(Request $request, AccountService $accountService)
     {
+
         $accountService->updateAccount($request->all());
         return redirect()->route('account.show');
     }

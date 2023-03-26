@@ -7,15 +7,13 @@ use App\Models\Contacts;
 use App\Models\FormContact;
 use Illuminate\Http\Request;
 
-class ContactsController
+class ContactsController extends Controller
 {
     public function contacts()
     {
-        $categories = Category::all();
         $forms = FormContact::all();
         $contacts = Contacts::all();
         return view('contacts', [
-            'categories' => $categories,
             'contacts' => $contacts,
             'forms' => $forms
         ]);

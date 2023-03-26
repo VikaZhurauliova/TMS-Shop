@@ -18,7 +18,7 @@ class AccountService
             'birthday' => $data['birthday'],
             'sex' => $data['sex'],
             'phone' => $data['phone'],
-            'description' => $data['description'],
+//            'description' => $data['description'],
             'country' => $data['country'],
             'city' => $data['city'],
             'timezone' => $data['timezone'],

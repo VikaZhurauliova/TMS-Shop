@@ -33,10 +33,10 @@
                                 </div>
                             </div>
                             <div class="text-left form-group">
-                                <button type="button" class="btn">Login</button>
+                                <button type="button" class="btn"><a href="{{route('main')}}">Login</button>
                             </div>
                         </form>
-                        <p class="small">Don't have an account yet? <a href="{{route('auth.register')}}">Register New Account</a>
+                        <p class="small">Don't have an account yet? <a href="{{ route('auth.registerPage') }}">Register New Account</a>
                         </p>
                     </div>
                 </div>

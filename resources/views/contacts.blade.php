@@ -31,10 +31,6 @@
                                 <label for="message">Message</label>
                                 <textarea type="text" name="message" required rows="5" class="form-control required" placeholder="Enter your Message"></textarea>
                             </div>
-                            <!--  <div class="form-group">
-                                <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-                                <div class="g-recaptcha" data-sitekey="6LddCxAUAAAAAKOg0-U6IprqOZ7vTfiMNSyQT2-M"></div>
-                            </div>  -->
                             <button class="btn" type="submit" id="form-submit"><i class="fa fa-paper-plane"></i>&nbsp;Send message</button>
                         </form>
                     </div>
@@ -52,9 +48,6 @@
                             </address>
                         </div>
                     </div>
-                    <!-- Google Map -->
-                    <div class="map" data-latitude="-37.817240" data-longitude="144.955826" data-style="light" data-info="Hello from &lt;br&gt; Inspiro Themes"></div>
-                    <!-- end: Google Map -->
                 </div>
             </div>
         </div>

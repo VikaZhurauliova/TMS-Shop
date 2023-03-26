@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 
-class CartController
+class CartController extends Controller
 {
     public function cart()
     {
-        $categories = Category::all();
+
         return view('cart', [
-            'categories' => $categories
+
         ]);
     }
 }

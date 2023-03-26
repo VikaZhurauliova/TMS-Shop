@@ -33,7 +33,7 @@ Route::group(['controller' => AuthController::class], function () {
     Route::post('/', 'updateAccount')->name('account.update');
 });*/
 
-Route::get('/account', [AccountController::class, 'account'])->name('account');
+Route::get('/account', [AccountController::class, 'account'])->name('account.show');
 Route::post('/account', [AccountController::class, 'updateAccount'])->name('account.update');
 
 Route::get('/contacts', [ContactsController::class, 'contacts'])->name('contacts');

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Banner;
 use App\Models\Category;
 
-class MainController
+class MainController extends Controller
 {
     public function main()
     {

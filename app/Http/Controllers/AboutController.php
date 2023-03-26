@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 
-class AboutController
+class AboutController extends Controller
 {
     public function about()
     {
-        $categories = Category::all();
+
         return view('about', [
-            'categories' => $categories
+
         ]);
     }
 }

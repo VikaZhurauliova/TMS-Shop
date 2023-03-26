@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 
-class LoginController
+class LoginController extends Controller
 {
     public function login()
     {
-        $categories = Category::all();
         return view('login', [
-            'categories' => $categories
+
         ]);
     }
 }
