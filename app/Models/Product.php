@@ -11,6 +11,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Product extends Model
 {
     use HasFactory;
+    protected $fillable = [
+
+        'nullable|min:2',
+        'description',
+        'created_at',
+        'price',
+        'sale_price'
+    ];
 
     public function images(): HasMany
     {

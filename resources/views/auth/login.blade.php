@@ -19,11 +19,11 @@
                             @csrf
                             <div class="form-group">
                                 <label class="sr-only">Username or Email</label>
-                                <input type="text" class="form-control" placeholder="Username or Email">
+                                <input name="email" type="text" class="form-control" placeholder="Username or Email">
                             </div>
                             <div class="form-group m-b-5">
                                 <label class="sr-only">Password</label>
-                                <input type="password" class="form-control" placeholder="Password">
+                                <input name='password' type="password" class="form-control" placeholder="Password">
                             </div>
                             <div class="form-group form-inline text-left">
                                 <div class="form-check">
@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                             <div class="text-left form-group">
-                                <button type="button" class="btn"><a href="{{route('main')}}">Login</button>
+                                <button type="submit" class="btn">Login</button>
                             </div>
                         </form>
                         <p class="small">Don't have an account yet? <a href="{{ route('auth.registerPage') }}">Register New Account</a>

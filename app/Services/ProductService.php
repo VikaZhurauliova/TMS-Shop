@@ -11,10 +11,10 @@ class ProductService
         $products = Product::query();
 
         $products = match ($params['sort'] ?? null){
-            'rating' =>'',
-            'price-asc' =>$products->orderBy('price'),
-            'price-desk'=>$products->orderByDesc('price'),
-            default =>$products->orderByDesc('created_at')
+            'rating' => $products->withAvg('reviews', 'star_count')->groupBy('id')->orderByDesc('reviews_avg_star_count'),
+            'price-asc' => $products->orderBy('price'),
+            'price-desc' => $products->orderByDesc('price'),
+            default => $products->orderByDesc('created_at')
         };
 
         if (isset($params['price-min'])) {

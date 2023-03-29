@@ -64,28 +64,23 @@
             <!--Product list-->
             <div class="shop">
                 <div class="grid-layout grid-3-columns" data-item="grid-item">
-                    @foreach($products as $product)
+                    @foreach($category->products as $product)
                     <div class="grid-item">
                         <div class="product">
                             <div class="product-image">
-                                <a href="#"><img alt="Shop product image!" src="#">
-                                </a>
-                                <a href="#"><img alt="Shop product image!" src="images/shop/products/10.jpg">
+                                <a href="{{ route('products.show', ['product' => $product->id]) }}"><img alt="Shop product image!" src="{{$product->image}}">
                                 </a>
                                 {{--<span class="product-new">NEW</span>--}}
                                 <span class="product-wishlist">
                                         <a href="#"><i class="fa fa-heart"></i></a>
                                     </span>
-                                <div class="product-overlay">
-                                    <a href="shop-product-ajax-page.html" data-lightbox="ajax">Quick View</a>
-                                </div>
                             </div>
                             <div class="product-description">
                                 <div class="product-category">{{$category->name}}</div>
                                 <div class="product-title">
-                                    <h3><a href="#">{{$category->product?->name}}</a></h3>
+                                    <h3><a href="#">{{$product->name}}</a></h3>
                                 </div>
-                                <div class="product-price"><ins>{{$category->product?->price}}</ins>
+                                <div class="product-price"><ins>{{$product->price}}$</ins>
                                 </div>
                                 <div class="product-rate">
                                     <i class="fa fa-star"></i>

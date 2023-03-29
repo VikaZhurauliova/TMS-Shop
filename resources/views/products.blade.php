@@ -24,36 +24,38 @@
             <div class="row">
                 <!-- Content-->
                 <div class="content col-lg-9">
-                    <div class="row m-b-20">
-                        <div class="col-lg-6 p-t-10 m-b-20">
-                            <h3 class="m-b-20">Spring ’23</h3>
-                            <p>We can surprise you!</p>
+                    <div class="row ">
+                        <div class="col">
+                            <div class="col-lg-6 p-t-10 m-b-20">
+                                <h3 class="m-b-20">Spring ’23</h3>
+                                <p>We can surprise you!</p>
+                            </div>
                         </div>
-                        <div class="col-lg-3">
-                            <div class="order-select">
-                                <h6>Sort by</h6>
-                                <form method="GET" action="{{ route('products.index') }}">
-                                    <select name= 'sort' class="form-control">
+                        <div class="col">
+                            <form method="GET" action="{{ route('products.index') }}">
+                                <div class="order-select">
+                                    <h6>Sort by</h6>
+                                    <select name='sort' class="form-control">
                                         <option value="new">Sort by newness</option>
-                                        <option value="rating">Rating</option>
-                                        <option value="price-asc">Sort by price: low to high</option>
-                                        <option value="price-desc">Sort by price: high to low</option>
+                                        <option name="rating" value="rating">Rating</option>
+                                        <option name="price-asc" value="price-asc">Sort by price: low to high</option>
+                                        <option name="price-desk" value="price-desc">Sort by price: high to low</option>
                                     </select>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="order-select">
-                                <h6>Sort by Price</h6>
-                                <form method="GET">
-                                    <select class="form-control">
-                                        <option selected="selected" value="">0$ - 50$</option>
-                                        <option value="">51$ - 90$</option>
-                                        <option value="">91$ - 120$</option>
-                                        <option value="">121$ - 200$</option>
-                                    </select>
-                                </form>
-                            </div>
+                                </div>
+                                <div class="order-select">
+                                    <h6>Price min</h6>
+                                    <div class="form-group">
+                                        <input type="number" placeholder="0" class="form-control" name="price-min">
+                                    </div>
+                                </div>
+                                <div class="order-select">
+                                    <h6>Price max</h6>
+                                    <div class="form-group">
+                                        <input type="number" placeholder="10000" class="form-control" name="price-max">
+                                    </div>
+                                </div>
+                                <button class="btn" type="submit" id="form-submit"><i class="fa fa-paper-plane"></i>&nbsp;Send </button>
+                            </form>
                         </div>
                     </div>
                     <!--Product list-->
@@ -119,6 +121,7 @@
                     </div>
                     <!--End: Product list-->
                 </div>
+
                 <!-- end: Content-->
                 <!-- Sidebar-->
                 <div class="sidebar col-lg-3">

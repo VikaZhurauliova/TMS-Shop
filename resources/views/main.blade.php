@@ -7,7 +7,7 @@
         <div class="container container-fullscreen">
             <div class="text-middle text-center text-light">
                 <h2 class="text-lg"><span class="text-rotator">{{$banner->description}}</span><br>{{$banner->name}}</h2>
-                <a href="#" class="btn btn-light">Buy now</a>
+                <a href="{{route('products.index')}}" class="btn btn-light">Buy now</a>
             </div>
         </div>
     </section>

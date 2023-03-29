@@ -22,7 +22,7 @@ class WishlistController extends Controller
         if (!$user->wishlist()->where('product_id', $product->id)->first()) {
             $user->wishlist()->attach($product);
         }
-
+        session()->flash('success', 'Product has been successfully added.');
         return redirect()->back();
     }
 

@@ -25,6 +25,7 @@ class AccountController extends Controller
     {
 
         $accountService->updateAccount($request->all());
+        session()->flash('success', 'Account has been successfully update.');
         return redirect()->route('account.show');
     }
 }

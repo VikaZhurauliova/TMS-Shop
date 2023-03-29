@@ -34,7 +34,7 @@ class ContactsController extends Controller
 
         ]);
 
-
+        session()->flash('success', 'Information has been successfully sent.');
         return redirect()->route('contacts');
     }
 }

@@ -78,7 +78,16 @@
                                 <li><a href="{{ route('contacts') }}">Contacts</a></li>
                                 @auth
                                     <li><a href="{{ route('account.show') }}">My account</a></li>
+                                    <li><a href="{{ route('wishlist.get') }}">WishList</a></li>
+                                    <li><a href="#">Cart</a></li>
                                     <li><a href="{{ route('auth.logout') }}">Logout</a></li>
+                                    @if(Auth::user()->is_admin)
+                                        <li class="dropdown"><a href="{{route('admin.main')}}">Admin</a>
+                                            <ul class="dropdown-menu">
+                                              <li><a href="{{route('admin.products.index')}}">Products</a></li>
+                                            </ul>
+                                        </li>
+                                    @endif
                                 @endauth
                                 @guest
                                     <li><a href="{{ route('auth.login') }}">Login</a></li>
@@ -111,11 +120,13 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <div class="widget">
-                                    <div class="widget-title">GIFT CARDS</div>
                                     <div class="widget-title">PROMOTIONS</div>
-                                    <div class="widget-title">SIGN UP FOR EMAIL</div>
-                                    <div class="widget-title">BECOME A MEMBER</div>
-                                    <div class="widget-title">SEND US FEEDBACK</div>
+                                    <ul class="list">
+                                        <li><a href="#">GIFT CARDS</a></li>
+                                        <li><a href="#">SIGN UP FOR EMAIL</a></li>
+                                        <li><a href="#">BECOME A MEMBER</a></li>
+                                        <li><a href="{{ route('contacts') }}">SEND US FEEDBACK</a></li>
+                                    </ul>
                                 </div>
                             </div>
                             <div class="col-lg-3">
@@ -151,11 +162,26 @@
 </div> <!-- end: Body Inner -->
 <!-- Scroll top -->
 <a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
+
+    @if (session('success'))
+        <div id="notification-modal" data-notify="container" data-animate="fadeInLeftBig" class="bootstrap-notify col-xs-11 col-sm-3 alert alert-success" role="alert" data-notify-position="top-right" style="display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 10000; top: 30px; right: 30px;">
+            <span data-notify="title">{{ session('success') }}</span>
+        </div>
+    @elseif(session('error'))
+        <div id="notification-modal" data-notify="container" data-animate="zoomIn" class="bootstrap-notify col-xs-11 col-sm-3 alert alert-danger" role="alert" data-notify-position="top-right" style="display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 10000; top: 30px; right: 30px;">
+            <span data-notify="icon"></span> <span data-notify="title">{{ session('error') }}</span>
+        </div>
+    @endif
+
 <!--Plugins-->
-<script src="{{'/js/jquery.js'}}"></script>
-<script src="{{'/js/plugins.js'}}"></script>
-<!--Template functions-->
-<script src="{{'/js/functions.js'}}"></script>
+<script src="{{ asset('/js/jquery.js') }}"></script>
+<script src="{{ asset('/js/plugins.js') }}"></script>
+<script src="{{ asset('/js/functions.js') }}"></script>
+<script>
+    setTimeout( function() {
+        $('#notification-modal').hide('slow');
+    }, 2000);
+</script>
 </body>
 
 </html>
