@@ -83,9 +83,6 @@
                                     <li><a href="{{ route('auth.logout') }}">Logout</a></li>
                                     @if(Auth::user()->is_admin)
                                         <li class="dropdown"><a href="{{route('admin.main')}}">Admin</a>
-                                            <ul class="dropdown-menu">
-                                              <li><a href="{{route('admin.products.index')}}">Products</a></li>
-                                            </ul>
                                         </li>
                                     @endif
                                 @endauth

@@ -26,16 +26,14 @@
                             <div class="product-price"><ins>${{ $product->price }}</ins>
                             </div>
                             <div class="product-rate">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-o"></i>
+                                @for($i = 0; $i < $product->averageReviews(); $i++)
+                                    <i class="fa fa-star"></i>
+                                @endfor
                             </div>
-                            <div class="product-reviews"><a href="#">3 customer reviews</a>
+                            <div class="product-reviews"><a href="#">{{ count($product->reviews) }} customer reviews</a>
                             </div>
                             <div class="seperator m-b-10"></div>
-                            <p>{{$product->description}}</p>
+                            <p>{{$product->short_description}}</p>
                             <div class="product-meta">
 {{--                                @foreach($product->tag as $tags)
                                 <p>Tags: <a href="#" rel="tag">{{$tags->title}}</a>, <a rel="tag" href="#">T-shirts</a>
@@ -120,16 +118,7 @@
                     </ul>
                     <div class="tab-content" id="myTabContent3">
                         <div class="tab-pane fade active show" id="home3" role="tabpanel" aria-labelledby="home-tab">
-                            <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo
-                                minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis
-                                dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum
-                                necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non
-                                recusandae. </p>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                                voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
-                                occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt
-                                mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et
-                                expedita distinctio.</p>
+                            <p>{{$product->description}}</p>
                         </div>
                         <div class="tab-pane fade " id="profile3" role="tabpanel" aria-labelledby="profile-tab">
                             <table class="table table-striped table-bordered">
@@ -168,29 +157,29 @@
                         <div class="tab-pane fade" id="contact3" role="tabpanel" aria-labelledby="contact-tab">
                             <div class="comments" id="comments">
                                 <div class="comment_number">
-                                    Reviews <span>(3)</span>
+                                    Reviews <span>{{ count($product->reviews) }}</span>
                                 </div>
                                 <div class="comment-list">
                                     <!-- Comment -->
+                                    @foreach($product->reviews as $review)
                                     <div class="comment" id="comment-1-1">
                                         <div class="image"><img alt="" src="images/blog/author2.jpg" class="avatar">
                                         </div>
                                         <div class="text">
                                             <div class="product-rate">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-half-o"></i>
+                                                @for($i = 0; $i < $product->averageReviews(); $i++)
+                                                    <i class="fa fa-star"></i>
+                                                @endfor
                                             </div>
-                                            <h5 class="name">John Doe</h5>
-                                            <span class="comment_date">Posted at 15:32h, 06 December</span>
+                                            <h5 class="name">{{$review->user->name}}</h5>
+                                            <span class="comment_date">Posted at {{$review->user->created_at}}</span>
                                             <a class="comment-reply-link" href="#">Reply</a>
                                             <div class="text_holder">
-                                                <p>{{--{{$review->text}}--}}</p>
+                                                <p>{{$review->text}}</p>
                                             </div>
                                         </div>
                                     </div>
+                                    @endforeach
                                     <!-- end: Comment -->
                                 </div>
                             </div>

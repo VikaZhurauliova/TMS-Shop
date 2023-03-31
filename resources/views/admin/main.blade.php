@@ -20,37 +20,32 @@
                         </div>
                         <div class="col-md-4">
                             <div class="p-cb cb-text">
-                                <div class="cb-title"><a href="#">Banners</a></div>
+                                <div class="cb-title"><a href="{{ route('admin.banners.index') }}">Banners</a></div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="p-cb cb-text">
-                                <div class="cb-title"><a href="#">Feedback</a></div>
+                                <div class="cb-title"><a href="{{ route('admin.feedback.index') }}">Feedback</a></div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="p-cb cb-text">
-                                <div class="cb-title"><a href="#">Contacts</a></div>
+                                <div class="cb-title"><a href="{{ route('admin.deliveries.index')  }}">Delivery</a></div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="p-cb cb-text">
-                                <div class="cb-title"><a href="#">Deliveries</a></div>
+                                <div class="cb-title"><a href="{{ route('admin.reviews.index') }}">Reviews</a></div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="p-cb cb-text">
-                                <div class="cb-title"><a href="#">Reviews</a></div>
+                                <div class="cb-title"><a href="{{ route('admin.tags.index') }}">Tags</a></div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="p-cb cb-text">
-                                <div class="cb-title"><a href="#">Tags</a></div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="p-cb cb-text">
-                                <div class="cb-title"><a href="#">Users</a></div>
+                                <div class="cb-title"><a href="{{ route('admin.users.index') }}">Users</a></div>
                             </div>
                         </div>
                     </div>

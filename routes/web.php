@@ -21,8 +21,10 @@ Route::group(['prefix' => '/products', 'controller' => ProductController::class]
 Route::group(['controller' => AuthController::class], function () {
     Route::get('/login', 'getLoginPage')->name('auth.loginPage');
     Route::post('/login', 'login')->name('auth.login');
+
     Route::get('/register', 'getRegisterPage')->name('auth.registerPage');
    Route::post('/register', 'register')->name('auth.register');
+
     Route::get('/logout', 'logout')->name('auth.logout');
 });
 
@@ -39,15 +41,30 @@ Route::group(['prefix' => '/wishlist', 'controller' => WishlistController::class
 });
 
 Route::group(['prefix' => '/admin', 'middleware' => 'admin', 'as' => 'admin.'], function () {
+
     Route::get('/', [\App\Http\Controllers\Admin\MainController::class, 'main'])->name('main');
 
-//    Route::group(['prefix' => '/deliveries', 'as' => 'deliveries.'], function () {
-//        Route::get('/', [\App\Http\Controllers\Admin\DeliveryController::class, 'index'])->name('index');
-//
-//    });
+    Route::group(['prefix' => '/reviews', 'as' => 'reviews.'], function () {
+        Route::get('/', [\App\Http\Controllers\Admin\ReviewController::class, 'index'])->name('index');
+        Route::get('/delete/{review}', [\App\Http\Controllers\Admin\ReviewController::class, 'destroy'])->name('delete');
+    });
+
+    Route::group(['prefix' => '/deliveries', 'as' => 'deliveries.'], function () {
+        Route::get('/', [\App\Http\Controllers\Admin\DeliveryController::class, 'index'])->name('index');
+
+        Route::get('/create', [\App\Http\Controllers\Admin\DeliveryController::class, 'create'])->name('create.view');
+        Route::post('/create', [\App\Http\Controllers\Admin\DeliveryController::class, 'store'])->name('create');
+
+        Route::get('/update/{delivery}', [\App\Http\Controllers\Admin\DeliveryController::class, 'edit'])->name('update.view');
+        Route::post('/update/{delivery}', [\App\Http\Controllers\Admin\DeliveryController::class, 'update'])->name('update');
+
+        Route::get('/delete/{delivery}', [\App\Http\Controllers\Admin\DeliveryController::class, 'destroy'])->name('delete');
+    });
 
     Route::group(['prefix' => '/products', 'as' => 'products.'], function () {
         Route::get('/', [\App\Http\Controllers\Admin\ProductController::class, 'index'])->name('index');
+
+        Route::get('/export-excel', [\App\Http\Controllers\Admin\ProductController::class, 'exportExcel'])->name('export.excel');
 
         Route::get('/create', [\App\Http\Controllers\Admin\ProductController::class, 'create'])->name('create.view');
         Route::post('/create', [\App\Http\Controllers\Admin\ProductController::class, 'store'])->name('create');
@@ -57,6 +74,42 @@ Route::group(['prefix' => '/admin', 'middleware' => 'admin', 'as' => 'admin.'], 
 
         Route::get('/delete/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'destroy'])->name('delete');
     });
+
+    Route::group(['prefix' => '/banners', 'as' => 'banners.'], function () {
+        Route::get('/', [\App\Http\Controllers\Admin\BannerController::class, 'index'])->name('index');
+
+        Route::get('/create', [\App\Http\Controllers\Admin\BannerController::class, 'create'])->name('create.view');
+        Route::post('/create', [\App\Http\Controllers\Admin\BannerController::class, 'store'])->name('create');
+
+        Route::get('/update/{banner}', [\App\Http\Controllers\Admin\BannerController::class, 'edit'])->name('update.view');
+        Route::post('/update/{banner}', [\App\Http\Controllers\Admin\BannerController::class, 'update'])->name('update');
+
+        Route::get('/delete/{banner}', [\App\Http\Controllers\Admin\BannerController::class, 'destroy'])->name('delete');
+    });
+
+    Route::group(['prefix' => '/feedback', 'as' => 'feedback.'], function () {
+        Route::get('/', [\App\Http\Controllers\Admin\FormContactController::class, 'index'])->name('index');
+        Route::get('/delete/{feedback}', [\App\Http\Controllers\Admin\FormContactController::class, 'destroy'])->name('delete');
+    });
+
+    Route::group(['prefix' => '/tags', 'as' => 'tags.'], function () {
+        Route::get('/', [\App\Http\Controllers\Admin\TagController::class, 'index'])->name('index');
+
+        Route::get('/create', [\App\Http\Controllers\Admin\TagController::class, 'create'])->name('create.view');
+        Route::post('/create', [\App\Http\Controllers\Admin\TagController::class, 'store'])->name('create');
+
+        Route::get('/update/{tag}', [\App\Http\Controllers\Admin\TagController::class, 'edit'])->name('update.view');
+        Route::post('/update/{tag}', [\App\Http\Controllers\Admin\TagController::class, 'update'])->name('update');
+
+        Route::get('/delete/{tag}', [\App\Http\Controllers\Admin\TagController::class, 'destroy'])->name('delete');
+    });
+
+    Route::group(['prefix' => '/users', 'as' => 'users.'], function () {
+        Route::get('/', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('index');
+
+        Route::get('/delete/{user}', [\App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('delete');
+});
+
 });
 
 Route::get('/cart', [CartController::class, 'cart'])->name('cart');

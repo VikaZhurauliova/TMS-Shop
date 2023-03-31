@@ -9,8 +9,8 @@
             </div>
             <div class="breadcrumb">
                 <ul>
-                    <li><a href="#">Admin</a> </li>
-                    <li class="active"><a href="#">Products</a> </li>
+                    <li><a href="{{route('admin.main')}}">Admin</a> </li>
+                    <li><a href="{{route('admin.products.index')}}">Products</a> </li>
                 </ul>
             </div>
         </div>
@@ -24,6 +24,7 @@
                 <div class="col-lg-6">
                     <a href="{{ route('admin.products.create') }}" class="btn btn-light"><i class="icon-plus"></i>Add Product</a>
                     <a class="btn btn-light"><i class="icon-plus"></i>Export to csv</a>
+                    <a href="{{ route('admin.products.export.excel') }}" class="btn btn-light"><i class="icon-plus"></i>Export to excel</a>
                 </div>
             </div>
             <div class="row">

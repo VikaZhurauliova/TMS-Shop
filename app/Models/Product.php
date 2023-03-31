@@ -13,7 +13,7 @@ class Product extends Model
     use HasFactory;
     protected $fillable = [
 
-        'nullable|min:2',
+        'name',
         'description',
         'created_at',
         'price',

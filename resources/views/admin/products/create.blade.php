@@ -9,8 +9,9 @@
             </div>
             <div class="breadcrumb">
                 <ul>
-                    <li><a href="{{route('products.index')}}">Shop</a> </li>
-                    <li><a href="#">Create</a> </li>
+                    <li><a href="{{route('admin.main')}}">Admin</a> </li>
+                    <li><a href="{{route('admin.products.index')}}">Products</a> </li>
+                    <li><a href="{{ route('admin.products.create') }}">Create</a> </li>
                 </ul>
             </div>
         </div>
@@ -33,10 +34,6 @@
                                         <input type="text" class="form-control" name="name" placeholder="Enter name" required>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="username">Description</label>
-                                        <input type="text" class="form-control" value="{{ old('description') }}" name="description" placeholder="Enter description" required>
-                                    </div>
-                                    <div class="form-group col-md-6">
                                         <label for="username">Price</label>
                                         <input type="text" class="form-control" value="{{ old('price') }}" name="price" placeholder="Enter price" required>
                                     </div>
@@ -52,6 +49,15 @@
                                             <option value="">Select category</option>
                                             @foreach($categories as $category)
                                             <option>{{$category->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="gender">Tag</label>
+                                        <select class="form-control" name="tag" required>
+                                            <option value="">Select tag</option>
+                                            @foreach($tags as $tag)
+                                                <option>{{$tag->title}}</option>
                                             @endforeach
                                         </select>
                                     </div>

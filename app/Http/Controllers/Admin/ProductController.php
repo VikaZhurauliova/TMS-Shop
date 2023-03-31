@@ -6,7 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Tag;
+use App\Services\ProductService;
 use Illuminate\Http\Request;
+
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 
 class ProductController extends Controller
 {
@@ -29,6 +37,7 @@ class ProductController extends Controller
     {
 
         return view('admin.products.create', [
+            'tags' => Tag::query()->where('is_active', 1)->get(),
             'categories' => Category::query()->where('is_active', 1)->get()
         ]);
 
@@ -77,4 +86,10 @@ class ProductController extends Controller
         session()->flash('success', 'Product has been successfully deleted.');
         return back();
     }
+
+    public function exportExcel(ProductService $productService)
+    {
+        $productService->exportExcel(Product::all());
+    }
+
 }
