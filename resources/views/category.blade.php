@@ -5,7 +5,6 @@
         <div class="container">
             <div class="page-title">
                 <h1>Shop</h1>
-                <span>Shop 3 columns version</span>
             </div>
             <div class="breadcrumb">
                 <ul>
@@ -15,8 +14,6 @@
                     </li>
                     <li class="active"><a href="#">{{$category->name}}</a>
                     </li>
-
-
                 </ul>
             </div>
         </div>
@@ -97,17 +94,7 @@
                     @endforeach
                 </div>
                 <hr>
-                <!-- Pagination -->
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                    <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
-                </ul>
-                <!-- end: Pagination -->
+                {!! $products->appends(Request::all())->links() !!}
             </div>
             <!--End: Product list-->
         </div>

@@ -9,8 +9,8 @@
             </div>
             <div class="breadcrumb">
                 <ul>
-                    <li><a href="{{route('admin.main')}}">Admin</a> </li>
-                    <li><a href="{{route('admin.products.index')}}">Products</a> </li>
+                    <li><a href="{{ route('admin.main') }}">Admin</a> </li>
+                    <li class="active"><a href="{{ route('admin.feedback.index') }}">Feedback</a> </li>
                 </ul>
             </div>
         </div>
@@ -22,9 +22,7 @@
             <!-- DataTable -->
             <div class="row mb-3">
                 <div class="col-lg-6">
-                    <a href="{{ route('admin.products.create') }}" class="btn btn-light"><i class="icon-plus"></i>Add Product</a>
                     <a class="btn btn-light"><i class="icon-plus"></i>Export to csv</a>
-                    <a href="{{ route('admin.products.export.excel') }}" class="btn btn-light"><i class="icon-plus"></i>Export to excel</a>
                 </div>
             </div>
             <div class="row">
@@ -33,32 +31,29 @@
                         <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Sale</th>
-                            <th>Category</th>
+                            <th>Email</th>
+                            <th>Subject</th>
+                            <th>Message</th>
                             <th>Created at</th>
-                            <th>image</th>
                             <th>active</th>
                         </thead>
                         <tbody>
-                        @foreach($products as $product)
+                        @foreach($feedbacks as $feedback)
                         <tr>
-                            <td>{{$product->name}}</td>
-                            <td>{{$product->description}}</td>
-                            <td>{{$product->price}}</td>
-                            <td>{{$product->sale_price}}</td>
-                            <td>{{$product->category_id}}</td>
-                            <td>{{$product->created_at}}</td>
-                            <td>{{$product->image}}</td>
-                            @if($product->is_active)
+                            <td>{{$feedback->name}}</td>
+                            <td>{{$feedback->email}}</td>
+                            <td>{{$feedback->subject}}</td>
+                            <td>{{$feedback->message}}</td>
+                            <td>{{$feedback->created_at}}</td>
+
+                            @if($feedback->is_active)
                             <td><span class="badge badge-pill badge-primary">Active</span></td>
                             @else
                                 <td><span class="badge badge-pill badge-danger">Not active</span></td>
                             @endif
                             <td> <a class="ml-2" href="#" data-toggle="tooltip" data-original-title="Edit"><i
                                         class="icon-edit"></i></a>
-                                <a class="ml-2" href="{{ route('admin.products.delete', ['product' => $product->id]) }}" data-toggle="tooltip" data-original-title="Delete"><i
+                                <a class="ml-2" href="{{ route('admin.feedback.delete', ['feedback' => $feedback->id]) }}" data-toggle="tooltip" data-original-title="Delete"><i
                                         class="icon-trash-2"></i></a>
 
                             </td>
@@ -67,7 +62,7 @@
                         </tbody>
                     </table>
                     <hr>
-                    {!! $products->appends(Request::all())->links() !!}
+                    {!! $feedbacks->appends(Request::all())->links() !!}
                 </div>
             </div>
             <!-- end: DataTable -->
