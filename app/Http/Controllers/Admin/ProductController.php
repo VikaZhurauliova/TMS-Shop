@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Tag;
@@ -18,9 +19,14 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    private ProductService $productService;
+
+    public function __construct(ProductService $productService)
+    {
+        $this->productService = $productService;
+        parent::__construct();
+    }
+
     public function index()
     {
         $products = Product::query()->orderByDesc('created_at')->paginate(10);
@@ -30,12 +36,8 @@ class ProductController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-
         return view('admin.products.create', [
             'tags' => Tag::query()->where('is_active', 1)->get(),
             'categories' => Category::query()->where('is_active', 1)->get()
@@ -43,43 +45,32 @@ class ProductController extends Controller
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(CreateProductRequest $request)
     {
         Product::query()->create($request->validated());
-        session()->flash('success', 'Product has been successfully created.');
+        session()->flash('success', 'Product has been successfully created');
+
         return redirect()->route('admin.products.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit(Product $product)
     {
-        //
+        return view('admin.products.update', [
+            'product' => $product,
+            'categories' => Category::query()->where('is_active', 1)->get()
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $product->update($request->validated());
+
+        session()->flash('success', 'Product has been successfully updated');
+
+        return redirect()->back();
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Product $product)
     {
         $product->delete();
@@ -91,5 +82,15 @@ class ProductController extends Controller
     {
         $productService->exportExcel(Product::all());
     }
+
+    public function exportCsv()
+    {
+        $this->productService->exportCsv(Product::all());
+    }
+
+//    public function exportCsv(ProductService $productService)
+//    {
+//        $productService->exportCsv(Product::all());
+//    }
 
 }

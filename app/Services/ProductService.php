@@ -30,7 +30,7 @@ class ProductService
             $products->where('price', '<', $params['price-max']);
         }
 
-        return $products->where('is_active', 1)->paginate(12);
+        return $products->where('is_active', 1)->paginate(5);
     }
 
     public function exportExcel(Collection $products)
@@ -64,5 +64,32 @@ class ProductService
             $activeWorksheet->setCellValue('H' .  $index, $product->is_active ? 'Активен' : 'Не активен');
             $activeWorksheet->setCellValue('I' .  $index, $product->created_at);
         }
+    }
+
+    public function exportCsv(Collection $products)
+    {
+        header('Content-Type: text/csv');
+        header('Content-Disposition: attachment; filename=products.csv');
+
+        $f = fopen('php://output', 'w');
+        fputcsv($f, ['ID', 'Title', 'Short description', 'Price', 'Sale price', 'Description', 'Category name', 'Status', 'Created at'], ';');
+
+        foreach ($products as $product) {
+            $data = [
+                $product->id,
+                $product->name,
+                $product->short_description,
+                $product->description,
+                $product->price,
+                $product->sale_price,
+                $product->is_active == 1 ? 'Активен' : 'Не активен',
+                $product->category?->name,
+                $product->created_at,
+                $product->image
+
+            ];
+            fputcsv($f, $data, ';');
+        }
+        exit;
     }
 }

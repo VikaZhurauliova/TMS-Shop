@@ -62,6 +62,9 @@ Route::group(['prefix' => '/admin', 'middleware' => 'admin', 'as' => 'admin.'], 
     });
 
     Route::group(['prefix' => '/products', 'as' => 'products.'], function () {
+        Route::get('/export-csv', [\App\Http\Controllers\Admin\ProductController::class, 'exportCsv'])->name('export.csv');
+        Route::get('/export-excel', [\App\Http\Controllers\Admin\ProductController::class, 'exportExcel'])->name('export.excel');
+
         Route::get('/', [\App\Http\Controllers\Admin\ProductController::class, 'index'])->name('index');
 
         Route::get('/export-excel', [\App\Http\Controllers\Admin\ProductController::class, 'exportExcel'])->name('export.excel');
@@ -73,6 +76,8 @@ Route::group(['prefix' => '/admin', 'middleware' => 'admin', 'as' => 'admin.'], 
         Route::post('/update/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'update'])->name('update');
 
         Route::get('/delete/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'destroy'])->name('delete');
+
+//        Route::get('/download-csv', [\App\Http\Controllers\Admin\ProductController::class, 'downloadCsv'])->name('download.csv');
     });
 
     Route::group(['prefix' => '/banners', 'as' => 'banners.'], function () {

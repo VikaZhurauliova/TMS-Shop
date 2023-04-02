@@ -15,9 +15,12 @@ class Product extends Model
 
         'name',
         'description',
+        'short_description',
         'created_at',
         'price',
-        'sale_price'
+        'sale_price',
+        'category_id',
+        'is_active'
     ];
 
     public function images(): HasMany

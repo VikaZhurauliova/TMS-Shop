@@ -69,24 +69,22 @@
                                 </a>
                                 {{--<span class="product-new">NEW</span>--}}
                                 <span class="product-wishlist">
-                                        <a href="#"><i class="fa fa-heart"></i></a>
+                                        <a href="#" ><i class="fa fa-heart"></i></a>
                                     </span>
                             </div>
                             <div class="product-description">
                                 <div class="product-category">{{$category->name}}</div>
                                 <div class="product-title">
-                                    <h3><a href="#">{{$product->name}}</a></h3>
+                                    <h3><a href="{{ route('products.show', ['product' => $product->id]) }}">{{$product->name}}</a></h3>
                                 </div>
                                 <div class="product-price"><ins>{{$product->price}}$</ins>
                                 </div>
                                 <div class="product-rate">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
+                                    @for($i = 0; $i < $product->averageReviews(); $i++)
+                                        <i class="fa fa-star"></i>
+                                    @endfor
                                 </div>
-                                <div class="product-reviews"><a href="#">6 customer reviews</a>
+                                <div class="product-reviews"><a href="#">{{ count($product->reviews) }} customer reviews</a>
                                 </div>
                             </div>
                         </div>
