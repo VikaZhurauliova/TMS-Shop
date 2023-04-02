@@ -110,6 +110,9 @@ Route::group(['prefix' => '/admin', 'middleware' => 'admin', 'as' => 'admin.'], 
     });
 
     Route::group(['prefix' => '/users', 'as' => 'users.'], function () {
+        Route::get('/export-csv', [\App\Http\Controllers\Admin\UserController::class, 'exportCsv'])->name('export.csv');
+        Route::get('/export-excel', [\App\Http\Controllers\Admin\UserController::class, 'exportExcel'])->name('export.excel');
+
         Route::get('/', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('index');
 
         Route::get('/delete/{user}', [\App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('delete');

@@ -47,7 +47,7 @@ class ProductService
 
     private function prepareExcelData(Worksheet $activeWorksheet, Collection $products)
     {
-        $columns = ['ID', 'Title', 'Short description', 'Price', 'Sale price', 'Description', 'Category name', 'Status', 'Created at'];
+        $columns = ['ID', 'Name', 'Short description', 'Description', 'Price', 'Sale price', 'Status', 'Category name', 'Created at', 'Image'];
         for ($i = 0; $i < count($columns); $i++) {
             $activeWorksheet->setCellValue(chr(65 + $i) . '1', $columns[$i]);
         }
@@ -55,14 +55,15 @@ class ProductService
         foreach ($products as $key => $product) {
             $index = $key + 2;
             $activeWorksheet->setCellValue('A' .  $index, $product->id);
-            $activeWorksheet->setCellValue('B' .  $index, $product->title);
+            $activeWorksheet->setCellValue('B' .  $index, $product->name);
             $activeWorksheet->setCellValue('C' .  $index, $product->short_description);
-            $activeWorksheet->setCellValue('D' .  $index, $product->price);
-            $activeWorksheet->setCellValue('E' .  $index, $product->sale_price);
-            $activeWorksheet->setCellValue('F' .  $index, $product->description);
-            $activeWorksheet->setCellValue('G' .  $index, $product->category?->name);
-            $activeWorksheet->setCellValue('H' .  $index, $product->is_active ? 'Активен' : 'Не активен');
+            $activeWorksheet->setCellValue('D' .  $index, $product->description);
+            $activeWorksheet->setCellValue('E' .  $index, $product->price);
+            $activeWorksheet->setCellValue('F' .  $index, $product->sale_price);
+            $activeWorksheet->setCellValue('G' .  $index, $product->is_active ? 'Активен' : 'Не активен');
+            $activeWorksheet->setCellValue('H' .  $index, $product->category?->name);
             $activeWorksheet->setCellValue('I' .  $index, $product->created_at);
+            $activeWorksheet->setCellValue('J' .  $index, $product->image);
         }
     }
 
@@ -72,7 +73,7 @@ class ProductService
         header('Content-Disposition: attachment; filename=products.csv');
 
         $f = fopen('php://output', 'w');
-        fputcsv($f, ['ID', 'Title', 'Short description', 'Price', 'Sale price', 'Description', 'Category name', 'Status', 'Created at'], ';');
+        fputcsv($f, ['ID', 'Name', 'Short description', 'Description', 'Price', 'Sale price', 'Status', 'Category name', 'Created at', 'Image'], ';');
 
         foreach ($products as $product) {
             $data = [

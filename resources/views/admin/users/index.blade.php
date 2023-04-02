@@ -22,8 +22,8 @@
             <!-- DataTable -->
             <div class="row mb-3">
                 <div class="col-lg-6">
-                    <a class="btn btn-light"><i class="icon-plus"></i>Export to csv</a>
-{{--                    <a href="{{ route('admin.products.export.excel') }}" class="btn btn-light"><i class="icon-plus"></i>Export to excel</a>--}}
+                    <a href="{{ route('admin.users.export.csv') }}" class="btn btn-light"><i class="icon-plus"></i>Export to csv</a>
+                    <a href="{{ route('admin.users.export.excel') }}" class="btn btn-light"><i class="icon-plus"></i>Export to excel</a>
                 </div>
             </div>
             <div class="row">
