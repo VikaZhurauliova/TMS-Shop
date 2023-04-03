@@ -34,8 +34,8 @@
                             <th>Title</th>
                             <th>Description</th>
                             <th>Created at</th>
-                            <th>image</th>
-                            <th>active</th>
+                            <th>Image</th>
+                            <th>Status</th>
                         </thead>
                         <tbody>
                         @foreach($banners as $banner)
@@ -49,12 +49,9 @@
                             @else
                                 <td><span class="badge badge-pill badge-danger">Not active</span></td>
                             @endif
-{{--                            <td> <a class="ml-2" href="#" data-toggle="tooltip" data-original-title="Edit"><i--}}
-{{--                                        class="icon-edit"></i></a>--}}
-{{--                                <a class="ml-2" href="{{ route('admin.deliveries.delete', ['$delivery' => $delivery->id]) }}" data-toggle="tooltip" data-original-title="Delete"><i--}}
-{{--                                        class="icon-trash-2"></i></a>--}}
-
-{{--                            </td>--}}
+                            <td> <a class="ml-2" href="{{ route('admin.banners.update.view', ['banner' => $banner->id]) }}" data-toggle="tooltip" data-original-title="Edit"><i class="icon-edit"></i></a>
+                                <a class="ml-2" href="{{ route('admin.banners.delete', ['banner' => $banner->id]) }}" data-toggle="tooltip" data-original-title="Delete"><i class="icon-trash-2"></i></a>
+                            </td>
                         </tr>
                         @endforeach
                         </tbody>

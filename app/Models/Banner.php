@@ -10,9 +10,9 @@ class Banner extends Model
     use HasFactory;
     protected $fillable = [
 
-        'name',
-        'description',
-        'created_at',
-        'is_active',
+        'name' => 'nullable|min:2',
+        'description' => 'nullable|min:2',
+        'created_at' => 'nullable',
+        'is_active' => 'nullable',
     ];
 }

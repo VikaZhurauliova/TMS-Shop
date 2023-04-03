@@ -53,7 +53,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="gender">Category</label>
-                                        <select class="form-control" name="category" required>
+                                        <select class="form-control" name="category_id" required>
                                             <option value="">Select category</option>
                                             @foreach($categories as $category)
                                                 <option value="{{ $category->id }}" @if(old('category') == $category->id) selected @endif>{{ $category->name }}</option>

@@ -55,6 +55,7 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
+
         return view('admin.products.update', [
             'product' => $product,
             'categories' => Category::query()->where('is_active', 1)->get()

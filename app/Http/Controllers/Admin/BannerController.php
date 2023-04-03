@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateBannerRequest;
+use App\Http\Requests\UpdateBannerRequest;
 use App\Models\Banner;
-use App\Models\Delivery;
 use Illuminate\Http\Request;
 
 class BannerController extends Controller
@@ -52,17 +52,23 @@ class BannerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Banner $banner)
     {
-        //
+        return view('admin.banners.update', [
+            'banner' => $banner,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateBannerRequest $request, Banner $banner)
     {
-        //
+        $banner->update($request->validated());
+
+        session()->flash('success', 'Banner has been successfully updated');
+
+        return redirect()->back();
     }
 
     /**
@@ -74,4 +80,5 @@ class BannerController extends Controller
         session()->flash('success', 'Banner has been successfully deleted.');
         return back();
     }
+
 }
