@@ -32,11 +32,11 @@ class UserService
 
         foreach ($users as $key => $user) {
             $index = $key + 2;
-            $activeWorksheet->setCellValue('A' .  $index, $user->id);
-            $activeWorksheet->setCellValue('B' .  $index, $user->name);
-            $activeWorksheet->setCellValue('C' .  $index, $user->email);
-            $activeWorksheet->setCellValue('D' .  $index, $user->password);
-            }
+            $activeWorksheet->setCellValue('A' . $index, $user->id);
+            $activeWorksheet->setCellValue('B' . $index, $user->name);
+            $activeWorksheet->setCellValue('C' . $index, $user->email);
+            $activeWorksheet->setCellValue('D' . $index, $user->password);
+        }
     }
 
     public function exportCsv(Collection $users)

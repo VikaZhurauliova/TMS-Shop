@@ -27,15 +27,16 @@ class RegisterRequest extends FormRequest
             'password' => 'required|min:8|max:55|confirmed'
         ];
     }
+
     public function messages()
     {
         return [
-          'name.min' => 'Name must be minimum 8 characters',
-          'email.required' => ' The email cannot be empty',
-          'email.unique' => 'User with this email already exists',
-          'password.required' => 'The password cannot be empty',
-          'password.min' => 'The password must be minimum 8 characters',
-          'password.max' => 'The password must be maximum 8 characters'
+            'name.min' => 'Name must be minimum 8 characters',
+            'email.required' => ' The email cannot be empty',
+            'email.unique' => 'User with this email already exists',
+            'password.required' => 'The password cannot be empty',
+            'password.min' => 'The password must be minimum 8 characters',
+            'password.max' => 'The password must be maximum 8 characters'
         ];
     }
 }

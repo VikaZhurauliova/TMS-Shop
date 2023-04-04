@@ -62,33 +62,38 @@
             <div class="shop">
                 <div class="grid-layout grid-3-columns" data-item="grid-item">
                     @foreach($category->products as $product)
-                    <div class="grid-item">
-                        <div class="product">
-                            <div class="product-image">
-                                <a href="{{ route('products.show', ['product' => $product->id]) }}"><img alt="Shop product image!" src="{{$product->image}}">
-                                </a>
-                                {{--<span class="product-new">NEW</span>--}}
-                                <span class="product-wishlist">
-                                        <a href="#" ><i class="fa fa-heart"></i></a>
+                        <div class="grid-item">
+                            <div class="product">
+                                <div class="product-image">
+                                    <a href="{{ route('products.show', ['product' => $product->id]) }}"><img
+                                            alt="Shop product image!" src="{{$product->image}}">
+                                    </a>
+                                    {{--<span class="product-new">NEW</span>--}}
+                                    <span class="product-wishlist">
+                                        <a href="#"><i class="fa fa-heart"></i></a>
                                     </span>
-                            </div>
-                            <div class="product-description">
-                                <div class="product-category">{{$category->name}}</div>
-                                <div class="product-title">
-                                    <h3><a href="{{ route('products.show', ['product' => $product->id]) }}">{{$product->name}}</a></h3>
                                 </div>
-                                <div class="product-price"><ins>{{$product->price}}$</ins>
-                                </div>
-                                <div class="product-rate">
-                                    @for($i = 0; $i < $product->averageReviews(); $i++)
-                                        <i class="fa fa-star"></i>
-                                    @endfor
-                                </div>
-                                <div class="product-reviews"><a href="#">{{ count($product->reviews) }} customer reviews</a>
+                                <div class="product-description">
+                                    <div class="product-category">{{$category->name}}</div>
+                                    <div class="product-title">
+                                        <h3>
+                                            <a href="{{ route('products.show', ['product' => $product->id]) }}">{{$product->name}}</a>
+                                        </h3>
+                                    </div>
+                                    <div class="product-price">
+                                        <ins>{{$product->price}}$</ins>
+                                    </div>
+                                    <div class="product-rate">
+                                        @for($i = 0; $i < $product->averageReviews(); $i++)
+                                            <i class="fa fa-star"></i>
+                                        @endfor
+                                    </div>
+                                    <div class="product-reviews"><a href="#">{{ count($product->reviews) }} customer
+                                            reviews</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
                 <hr>

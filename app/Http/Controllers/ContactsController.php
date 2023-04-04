@@ -18,7 +18,8 @@ class ContactsController extends Controller
             'forms' => $forms
         ]);
     }
-    public function sendContacts (Request $request)
+
+    public function sendContacts(Request $request)
     {
 
         $name = $request->input('name');
@@ -26,7 +27,7 @@ class ContactsController extends Controller
         $email = $request->input('email');
         $message = $request->input('message');
 
-        $feedback =FormContact::create([
+        $feedback = FormContact::create([
             'name' => $name,
             'subject' => $subject,
             'email' => $email,

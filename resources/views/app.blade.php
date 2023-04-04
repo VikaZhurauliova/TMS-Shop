@@ -2,8 +2,9 @@
 <html lang="en">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />    <meta name="author" content="INSPIRO" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="INSPIRO"/>
     <meta name="description" content="Themeforest Template Polo, html template">
     <link rel="icon" type="image/png" href="{{route('main')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,9 +31,10 @@
                 </div>
                 <!--End: Logo-->
                 <!-- Search -->
-                <div id="search"><a id="btn-search-close" class="btn-search-close" aria-label="Close search form"><i class="icon-x"></i></a>
+                <div id="search"><a id="btn-search-close" class="btn-search-close" aria-label="Close search form"><i
+                            class="icon-x"></i></a>
                     <form class="search-form" action="search-results-page.html" method="get">
-                        <input class="form-control" name="q" type="text" placeholder="Type & Search..." />
+                        <input class="form-control" name="q" type="text" placeholder="Type & Search..."/>
                         <span class="text-muted">Start typing & press "Enter" or "ESC" to close</span>
                     </form>
                 </div>
@@ -69,8 +71,9 @@
                                 <li class="dropdown"><a href="{{route('products.index')}}">Shop</a>
                                     <ul class="dropdown-menu">
                                         @foreach($categories as $category)
-                                        <li class="dropdown-submenu"><a href="{{ route('products.category', ['category' => $category->id]) }}">{{ $category->name }}</a>
-                                        </li>
+                                            <li class="dropdown-submenu"><a
+                                                    href="{{ route('products.category', ['category' => $category->id]) }}">{{ $category->name }}</a>
+                                            </li>
                                         @endforeach
                                     </ul>
                                 </li>
@@ -160,22 +163,26 @@
 <!-- Scroll top -->
 <a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
 
-    @if (session('success'))
-        <div id="notification-modal" data-notify="container" data-animate="fadeInLeftBig" class="bootstrap-notify col-xs-11 col-sm-3 alert alert-success" role="alert" data-notify-position="top-right" style="display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 10000; top: 30px; right: 30px;">
-            <span data-notify="title">{{ session('success') }}</span>
-        </div>
-    @elseif(session('error'))
-        <div id="notification-modal" data-notify="container" data-animate="zoomIn" class="bootstrap-notify col-xs-11 col-sm-3 alert alert-danger" role="alert" data-notify-position="top-right" style="display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 10000; top: 30px; right: 30px;">
-            <span data-notify="icon"></span> <span data-notify="title">{{ session('error') }}</span>
-        </div>
-    @endif
+@if (session('success'))
+    <div id="notification-modal" data-notify="container" data-animate="fadeInLeftBig"
+         class="bootstrap-notify col-xs-11 col-sm-3 alert alert-success" role="alert" data-notify-position="top-right"
+         style="display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 10000; top: 30px; right: 30px;">
+        <span data-notify="title">{{ session('success') }}</span>
+    </div>
+@elseif(session('error'))
+    <div id="notification-modal" data-notify="container" data-animate="zoomIn"
+         class="bootstrap-notify col-xs-11 col-sm-3 alert alert-danger" role="alert" data-notify-position="top-right"
+         style="display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 10000; top: 30px; right: 30px;">
+        <span data-notify="icon"></span> <span data-notify="title">{{ session('error') }}</span>
+    </div>
+@endif
 
 <!--Plugins-->
 <script src="{{ asset('/js/jquery.js') }}"></script>
 <script src="{{ asset('/js/plugins.js') }}"></script>
 <script src="{{ asset('/js/functions.js') }}"></script>
 <script>
-    setTimeout( function() {
+    setTimeout(function () {
         $('#notification-modal').hide('slow');
     }, 2000);
 </script>

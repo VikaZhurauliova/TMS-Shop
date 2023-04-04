@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Product extends Model
 {
     use HasFactory;
+
     protected $fillable = [
 
         'name',
@@ -42,6 +43,7 @@ class Product extends Model
     {
         return $this->hasMany(ProductReview::class);
     }
+
     public function averageReviews(): float
     {
         $reviews = $this->reviews;

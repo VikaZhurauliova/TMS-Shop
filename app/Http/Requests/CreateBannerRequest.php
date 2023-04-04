@@ -23,10 +23,10 @@ class CreateBannerRequest extends FormRequest
     {
         return [
 
-           'name' => 'nullable|min:2',
-           'description' => 'nullable|min:2',
-           'created_at' => 'nullable|date',
-           'is_active' => 'nullable|min:1',
+            'name' => 'nullable|min:2',
+            'description' => 'nullable|min:2',
+            'created_at' => 'nullable|date',
+            'is_active' => 'nullable|min:1',
 
         ];
     }

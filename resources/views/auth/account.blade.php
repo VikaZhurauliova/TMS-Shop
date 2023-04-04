@@ -15,31 +15,42 @@
                                 <div class="tabs">
                                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                                         <li class="nav-item">
-                                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#tabProfile" role="tab" aria-controls="home" aria-selected="true">Profile information</a>
+                                            <a class="nav-link active" id="home-tab" data-toggle="tab"
+                                               href="#tabProfile" role="tab" aria-controls="home" aria-selected="true">Profile
+                                                information</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#tabAddress" role="tab" aria-controls="contact" aria-selected="false">Address Information</a>
+                                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#tabAddress"
+                                               role="tab" aria-controls="contact" aria-selected="false">Address
+                                                Information</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#tabPassword" role="tab" aria-controls="profile" aria-selected="false">Password</a>
+                                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#tabPassword"
+                                               role="tab" aria-controls="profile" aria-selected="false">Password</a>
                                         </li>
                                     </ul>
                                     <div class="tab-content" id="myTabContent">
-                                        <div class="tab-pane fade show active" id="tabProfile" role="tabpanel" aria-labelledby="tab-profile">
+                                        <div class="tab-pane fade show active" id="tabProfile" role="tabpanel"
+                                             aria-labelledby="tab-profile">
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="first_name">First name</label>
-                                                    <input type="text" class="form-control" name="first_name" value="{{ $user->information?->first_name }}" placeholder="Enter your first name">
+                                                    <input type="text" class="form-control" name="first_name"
+                                                           value="{{ $user->information?->first_name }}"
+                                                           placeholder="Enter your first name">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="last_name">Last name</label>
-                                                    <input type="text" class="form-control" name="last_name" value="{{ $user->information?->last_name }}" placeholder="Enter your last name">
+                                                    <input type="text" class="form-control" name="last_name"
+                                                           value="{{ $user->information?->last_name }}"
+                                                           placeholder="Enter your last name">
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="gender">Date of Birth</label>
-                                                    <input class="form-control" type="date" value="{{ $user->information?->birthday }}" name="birthday">
+                                                    <input class="form-control" type="date"
+                                                           value="{{ $user->information?->birthday }}" name="birthday">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="sex">Gender</label>
@@ -53,11 +64,14 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="phone">Telephone</label>
-                                                    <input class="form-control" type="tel" value="{{ $user->information?->phone }}" name="phone" placeholder="Enter your phone number">
+                                                    <input class="form-control" type="tel"
+                                                           value="{{ $user->information?->phone }}" name="phone"
+                                                           placeholder="Enter your phone number">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade" id="tabAddress" role="tabpanel" aria-labelledby="tab-billing">
+                                        <div class="tab-pane fade" id="tabAddress" role="tabpanel"
+                                             aria-labelledby="tab-billing">
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="country">Country</label>
@@ -65,7 +79,8 @@
                                                         <option value=""></option>
                                                         @foreach($geos as $key => $geo)
                                                             @if($user->information?->country == $key)
-                                                                <option value="{{ $key }}" selected>{{ $geo->native }}</option>
+                                                                <option value="{{ $key }}"
+                                                                        selected>{{ $geo->native }}</option>
                                                             @else
                                                                 <option value="{{ $key }}">{{ $geo->native }}</option>
                                                             @endif
@@ -74,7 +89,9 @@
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="city">City</label>
-                                                    <input type="text" class="form-control" value="{{ $user->information?->city }}" name="city" placeholder="Enter your City">
+                                                    <input type="text" class="form-control"
+                                                           value="{{ $user->information?->city }}" name="city"
+                                                           placeholder="Enter your City">
                                                 </div>
                                             </div>
                                             <div class="form-row">
@@ -84,7 +101,8 @@
                                                         <option value=""></option>
                                                         @foreach($timezones as $key => $timezone)
                                                             @if($user->information?->timezone == $key)
-                                                                <option value="{{ $key }}" selected>{{ $timezone }}</option>
+                                                                <option value="{{ $key }}"
+                                                                        selected>{{ $timezone }}</option>
                                                             @else
                                                                 <option value="{{ $key }}">{{ $timezone }}</option>
                                                             @endif
@@ -93,7 +111,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade" id="tabPassword" role="tabpanel" aria-labelledby="tab-password">
+                                        <div class="tab-pane fade" id="tabPassword" role="tabpanel"
+                                             aria-labelledby="tab-password">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">

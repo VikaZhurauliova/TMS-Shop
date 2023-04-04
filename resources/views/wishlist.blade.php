@@ -47,9 +47,11 @@
                             @foreach($user->wishlist as $product)
                                 <tr>
                                     <td class="cart-product-remove">
-                                        <form action="{{ route('wishlist.delete', ['product' => $product->id]) }}" method="POST">
+                                        <form action="{{ route('wishlist.delete', ['product' => $product->id]) }}"
+                                              method="POST">
                                             @csrf
-                                            <a href="#" onclick="this.parentNode.submit()"><i class="fa fa-times"></i></a>
+                                            <a href="#" onclick="this.parentNode.submit()"><i
+                                                    class="fa fa-times"></i></a>
                                         </form>
                                     </td>
                                     <td class="cart-product-thumbnail">

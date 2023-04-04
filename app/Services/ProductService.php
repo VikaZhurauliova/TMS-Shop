@@ -15,7 +15,7 @@ class ProductService
     {
         $products = Product::query();
 
-        $products = match ($params['sort'] ?? null){
+        $products = match ($params['sort'] ?? null) {
             'rating' => $products->withAvg('reviews', 'star_count')->groupBy('id')->orderByDesc('reviews_avg_star_count'),
             'price-asc' => $products->orderBy('price'),
             'price-desc' => $products->orderByDesc('price'),
@@ -30,7 +30,7 @@ class ProductService
             $products->where('price', '<', $params['price-max']);
         }
 
-        return $products->where('is_active', 1)->paginate(5);
+        return $products->where('is_active', 1)->paginate(12);
     }
 
     public function exportExcel(Collection $products)
@@ -54,16 +54,16 @@ class ProductService
 
         foreach ($products as $key => $product) {
             $index = $key + 2;
-            $activeWorksheet->setCellValue('A' .  $index, $product->id);
-            $activeWorksheet->setCellValue('B' .  $index, $product->name);
-            $activeWorksheet->setCellValue('C' .  $index, $product->short_description);
-            $activeWorksheet->setCellValue('D' .  $index, $product->description);
-            $activeWorksheet->setCellValue('E' .  $index, $product->price);
-            $activeWorksheet->setCellValue('F' .  $index, $product->sale_price);
-            $activeWorksheet->setCellValue('G' .  $index, $product->is_active ? 'Активен' : 'Не активен');
-            $activeWorksheet->setCellValue('H' .  $index, $product->category?->name);
-            $activeWorksheet->setCellValue('I' .  $index, $product->created_at);
-            $activeWorksheet->setCellValue('J' .  $index, $product->image);
+            $activeWorksheet->setCellValue('A' . $index, $product->id);
+            $activeWorksheet->setCellValue('B' . $index, $product->name);
+            $activeWorksheet->setCellValue('C' . $index, $product->short_description);
+            $activeWorksheet->setCellValue('D' . $index, $product->description);
+            $activeWorksheet->setCellValue('E' . $index, $product->price);
+            $activeWorksheet->setCellValue('F' . $index, $product->sale_price);
+            $activeWorksheet->setCellValue('G' . $index, $product->is_active ? 'Активен' : 'Не активен');
+            $activeWorksheet->setCellValue('H' . $index, $product->category?->name);
+            $activeWorksheet->setCellValue('I' . $index, $product->created_at);
+            $activeWorksheet->setCellValue('J' . $index, $product->image);
         }
     }
 

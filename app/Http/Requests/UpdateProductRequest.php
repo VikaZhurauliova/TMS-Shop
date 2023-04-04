@@ -25,13 +25,12 @@ class UpdateProductRequest extends FormRequest
             'name' => 'min:2',
             'short_description' => 'nullable|min:2',
             'description' => 'nullable',
-            'price' => 'min:1',
-            'sale_price' => 'nullable|min:1',
+            'price' => 'min:1|numeric',
+            'sale_price' => 'nullable|numeric',
             'category_id' => 'nullable|integer',
             'is_active' => 'nullable',
             'tag' => 'nullable',
             'image' => 'nullable',
-            'created_at' => 'nullable',
             'files' => 'nullable'
         ];
     }

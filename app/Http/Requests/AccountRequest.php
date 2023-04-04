@@ -34,7 +34,7 @@ class AccountRequest extends FormRequest
         ];
     }
 
-public function messages()
+    public function messages()
     {
         return [
             'first_name.min' => 'The name must be minimum 2 characters',

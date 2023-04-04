@@ -19,11 +19,11 @@ class ProductController extends Controller
         $deliveries = Delivery::all();
         return view('product', [
             'product' => $product,
-            'deliveries' =>$deliveries,
+            'deliveries' => $deliveries,
         ]);
     }
 
-    public function products (Request $request, ProductService $productService)
+    public function products(Request $request, ProductService $productService)
     {
         $products = $productService->getProducts($request->all());
 
@@ -47,7 +47,7 @@ class ProductController extends Controller
         ]);
     }
 
-    public function category( Category $category)
+    public function category(Category $category)
     {
         $products = $category->orderBy('created_at')->paginate(12);
 

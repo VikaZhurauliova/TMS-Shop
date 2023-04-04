@@ -16,7 +16,7 @@ class Controller extends BaseController
 
     public function __construct()
     {
-       View::share('categories', Category::query()->where('is_active', 1)->get());
+        View::share('categories', Category::query()->where('is_active', 1)->get());
     }
 
 

@@ -8,9 +8,12 @@
                     <div class="col-lg-5">
                         <div class="product-image">
                             <!-- Carousel slider -->
-                            <div class="carousel dots-inside dots-dark arrows-visible" data-items="1" data-loop="true" data-autoplay="true" data-animate-in="fadeIn" data-animate-out="fadeOut" data-autoplay="2500" data-lightbox="gallery">
+                            <div class="carousel dots-inside dots-dark arrows-visible" data-items="1" data-loop="true"
+                                 data-autoplay="true" data-animate-in="fadeIn" data-animate-out="fadeOut"
+                                 data-autoplay="2500" data-lightbox="gallery">
                                 @foreach($product->images as $image)
-                                    <a href="{{ $image->id }}" data-lightbox="image" title="Shop product image!"><img alt="Shop product image!" src="{{ $image->image }}">
+                                    <a href="{{ $image->id }}" data-lightbox="image" title="Shop product image!"><img
+                                            alt="Shop product image!" src="{{ $image->image }}">
                                     </a>
                                 @endforeach
                             </div>
@@ -23,7 +26,8 @@
                             <div class="product-title">
                                 <h3><a href="#">{{ $product->name }}</a></h3>
                             </div>
-                            <div class="product-price"><ins>${{ $product->price }}</ins>
+                            <div class="product-price">
+                                <ins>${{ $product->price }}</ins>
                             </div>
                             <div class="product-rate">
                                 @for($i = 0; $i < $product->averageReviews(); $i++)
@@ -35,10 +39,10 @@
                             <div class="seperator m-b-10"></div>
                             <p>{{$product->short_description}}</p>
                             <div class="product-meta">
-{{--                                @foreach($product->tag as $tags)
-                                <p>Tags: <a href="#" rel="tag">{{$tags->title}}</a>, <a rel="tag" href="#">T-shirts</a>
-                                </p>
-                                    @endforeach--}}
+                                {{--                                @foreach($product->tag as $tags)
+                                                                <p>Tags: <a href="#" rel="tag">{{$tags->title}}</a>, <a rel="tag" href="#">T-shirts</a>
+                                                                </p>
+                                                                    @endforeach--}}
                             </div>
                             <div class="seperator m-t-20 m-b-10"></div>
                         </div>
@@ -48,27 +52,32 @@
                                 <ul class="product-size">
                                     <li>
                                         <label>
-                                            <input type="radio" checked="checked" value="option1" name="product-size"><span>xs</span>
+                                            <input type="radio" checked="checked" value="option1"
+                                                   name="product-size"><span>xs</span>
                                         </label>
                                     </li>
                                     <li>
                                         <label>
-                                            <input type="radio" checked="checked" value="option1" name="product-size"><span>s</span>
+                                            <input type="radio" checked="checked" value="option1"
+                                                   name="product-size"><span>s</span>
                                         </label>
                                     </li>
                                     <li>
                                         <label>
-                                            <input type="radio" checked="checked" value="option1" name="product-size"><span>m</span>
+                                            <input type="radio" checked="checked" value="option1"
+                                                   name="product-size"><span>m</span>
                                         </label>
                                     </li>
                                     <li>
                                         <label>
-                                            <input type="radio" checked="checked" value="option1" name="product-size"><span>l</span>
+                                            <input type="radio" checked="checked" value="option1"
+                                                   name="product-size"><span>l</span>
                                         </label>
                                     </li>
                                     <li>
                                         <label>
-                                            <input type="radio" checked="checked" value="option1" name="product-size"><span>xl</span>
+                                            <input type="radio" checked="checked" value="option1"
+                                                   name="product-size"><span>xl</span>
                                         </label>
                                     </li>
                                 </ul>
@@ -106,14 +115,17 @@
                 <div class="tabs tabs-folder">
                     <ul class="nav nav-tabs" id="myTab3" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active show" id="home-tab" data-toggle="tab" href="#home3" role="tab" aria-controls="home" aria-selected="false"><i class="fa fa-align-justify"></i>Description</a></a>
+                            <a class="nav-link active show" id="home-tab" data-toggle="tab" href="#home3" role="tab"
+                               aria-controls="home" aria-selected="false"><i class="fa fa-align-justify"></i>Description</a></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile3" role="tab" aria-controls="profile" aria-selected="true"><i class="fa fa-info"></i>Additional
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile3" role="tab"
+                               aria-controls="profile" aria-selected="true"><i class="fa fa-info"></i>Additional
                                 Info</a></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact3" role="tab" aria-controls="contact" aria-selected="false"><i class="fa fa-star"></i>Reviews</a></a>
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact3" role="tab"
+                               aria-controls="contact" aria-selected="false"><i class="fa fa-star"></i>Reviews</a></a>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent3">
@@ -162,23 +174,24 @@
                                 <div class="comment-list">
                                     <!-- Comment -->
                                     @foreach($product->reviews as $review)
-                                    <div class="comment" id="comment-1-1">
-                                        <div class="image"><img alt="" src="images/blog/author2.jpg" class="avatar">
-                                        </div>
-                                        <div class="text">
-                                            <div class="product-rate">
-                                                @for($i = 0; $i < $product->averageReviews(); $i++)
-                                                    <i class="fa fa-star"></i>
-                                                @endfor
+                                        <div class="comment" id="comment-1-1">
+                                            <div class="image"><img alt="" src="images/blog/author2.jpg" class="avatar">
                                             </div>
-                                            <h5 class="name">{{$review->user->name}}</h5>
-                                            <span class="comment_date">Posted at {{$review->user->created_at}}</span>
-                                            <a class="comment-reply-link" href="#">Reply</a>
-                                            <div class="text_holder">
-                                                <p>{{$review->text}}</p>
+                                            <div class="text">
+                                                <div class="product-rate">
+                                                    @for($i = 0; $i < $product->averageReviews(); $i++)
+                                                        <i class="fa fa-star"></i>
+                                                    @endfor
+                                                </div>
+                                                <h5 class="name">{{$review->user->name}}</h5>
+                                                <span
+                                                    class="comment_date">Posted at {{$review->user->created_at}}</span>
+                                                <a class="comment-reply-link" href="#">Reply</a>
+                                                <div class="text_holder">
+                                                    <p>{{$review->text}}</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     @endforeach
                                     <!-- end: Comment -->
                                 </div>

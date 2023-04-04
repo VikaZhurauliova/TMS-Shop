@@ -23,7 +23,7 @@ Route::group(['controller' => AuthController::class], function () {
     Route::post('/login', 'login')->name('auth.login');
 
     Route::get('/register', 'getRegisterPage')->name('auth.registerPage');
-   Route::post('/register', 'register')->name('auth.register');
+    Route::post('/register', 'register')->name('auth.register');
 
     Route::get('/logout', 'logout')->name('auth.logout');
 });
@@ -116,7 +116,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'admin', 'as' => 'admin.'], 
         Route::get('/', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('index');
 
         Route::get('/delete/{user}', [\App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('delete');
-});
+    });
 
 });
 

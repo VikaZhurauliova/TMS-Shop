@@ -29,47 +29,51 @@
                         <div class="grid-layout grid-3-columns" data-item="grid-item">
                             @foreach($products as $product)
                                 <div class="grid-item">
-                                <div class="product">
-                                    <div class="product-image">
-                                        <a href="{{ route('products.show', ['product' => $product->id]) }}"><img alt="Shop product image!" src="{{$product->image}}">
-                                        </a>
-{{--                                        @if(Carbon\Carbon::parse($product->created_at)->diffInDays(now()) > 3)
-                                            <span class="product-new">NEW</span>
-                                        @endif--}}
-                                        <span class="product-wishlist">
-                                                <form action="{{ route('wishlist.add', ['product' => $product->id]) }}" method="POST">
+                                    <div class="product">
+                                        <div class="product-image">
+                                            <a href="{{ route('products.show', ['product' => $product->id]) }}"><img
+                                                    alt="Shop product image!" src="{{$product->image}}">
+                                            </a>
+                                            {{--                                        @if(Carbon\Carbon::parse($product->created_at)->diffInDays(now()) > 3)
+                                                                                        <span class="product-new">NEW</span>
+                                                                                    @endif--}}
+                                            <span class="product-wishlist">
+                                                <form action="{{ route('wishlist.add', ['product' => $product->id]) }}"
+                                                      method="POST">
                                                     @csrf
-                                                        <a href="#" onclick="this.parentNode.submit()"><i class="fa fa-heart"></i></a>
+                                                        <a href="#" onclick="this.parentNode.submit()"><i
+                                                                class="fa fa-heart"></i></a>
                                                 </form>
                                             </span>
-                                        <div class="product-overlay">
-                                            <a href="#" data-lightbox="ajax">Quick View</a>
+                                            <div class="product-overlay">
+                                                <a href="#" data-lightbox="ajax">Quick View</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="product-description">
-                                        <div class="product-category">{{$product->category->name}}</div>
-                                        <div class="product-title">
-                                            <h3><a href="#">{{$product->name}}</a></h3>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins>
-                                                @if($product->sale_price)
-                                                    ${{ $product->sale_price }}
-                                                @else
-                                                    ${{ $product->price }}
-                                                @endif
-                                            </ins>
-                                        </div>
-                                        <div class="product-rate">
-                                            @for($i = 0; $i < $product->averageReviews(); $i++)
-                                                <i class="fa fa-star"></i>
-                                            @endfor
-                                        </div>
-                                        <div class="product-reviews"><a href="#">{{ count($product->reviews) }} customer reviews</a>
+                                        <div class="product-description">
+                                            <div class="product-category">{{$product->category->name}}</div>
+                                            <div class="product-title">
+                                                <h3><a href="#">{{$product->name}}</a></h3>
+                                            </div>
+                                            <div class="product-price">
+                                                <ins>
+                                                    @if($product->sale_price)
+                                                        ${{ $product->sale_price }}
+                                                    @else
+                                                        ${{ $product->price }}
+                                                    @endif
+                                                </ins>
+                                            </div>
+                                            <div class="product-rate">
+                                                @for($i = 0; $i < $product->averageReviews(); $i++)
+                                                    <i class="fa fa-star"></i>
+                                                @endfor
+                                            </div>
+                                            <div class="product-reviews"><a href="#">{{ count($product->reviews) }}
+                                                    customer reviews</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             @endforeach
                         </div>
                         <hr>
@@ -113,7 +117,9 @@
                         <h4 class="widget-title">Product categories</h4>
                         <ul class="list list-lines">
                             @foreach($categories as $category)
-                                <li><a href="{{ route('products.category', ['category' => $category->id]) }}">{{ $category->name }}</a> <span class="count">( {{ $category->count}} )</span>
+                                <li>
+                                    <a href="{{ route('products.category', ['category' => $category->id]) }}">{{ $category->name }}</a>
+                                    <span class="count">( {{ $category->count}} )</span>
                                 </li>
                             @endforeach
                         </ul>
@@ -121,25 +127,30 @@
                     <div class="widget clearfix widget-shop">
                         <h4 class="widget-title">Latest Products</h4>
                         @foreach($latestProducts as $product)
-                        <div class="product">
-                            <div class="product-image">
-                                <a href="{{ route('products.show', ['product' => $product->id]) }}"><img src="{{$product->image}}" alt="{{ $product->name }}">
-                                </a>
+                            <div class="product">
+                                <div class="product-image">
+                                    <a href="{{ route('products.show', ['product' => $product->id]) }}"><img
+                                            src="{{$product->image}}" alt="{{ $product->name }}">
+                                    </a>
+                                </div>
+                                <div class="product-description">
+                                    <div class="product-category">{{ $product->category?->name }}</div>
+                                    <div class="product-title">
+                                        <h3>
+                                            <a href="{{ route('products.show', ['product' => $product->id]) }}">{{$product->name}}</a>
+                                        </h3>
+                                    </div>
+                                    <div class="product-price">
+                                        <del>${{ $product->sale_price }}</del>
+                                        <ins>${{ $product->price }}</ins>
+                                    </div>
+                                    <div class="product-rate">
+                                        @for($i = 0; $i < $product->averageReviews(); $i++)
+                                            <i class="fa fa-star"></i>
+                                        @endfor
+                                    </div>
+                                </div>
                             </div>
-                            <div class="product-description">
-                                <div class="product-category">{{ $product->category?->name }}</div>
-                                <div class="product-title">
-                                    <h3><a href="{{ route('products.show', ['product' => $product->id]) }}">{{$product->name}}</a></h3>
-                                </div>
-                                <div class="product-price"><del>${{ $product->sale_price }}</del><ins>${{ $product->price }}</ins>
-                                </div>
-                                <div class="product-rate">
-                                    @for($i = 0; $i < $product->averageReviews(); $i++)
-                                        <i class="fa fa-star"></i>
-                                    @endfor
-                                </div>
-                            </div>
-                        </div>
                         @endforeach
                     </div>
                     <div class="widget clearfix widget-tags">
@@ -155,7 +166,8 @@
                             <h4 class="widget-title">Subscribe for Latest Offers</h4>
                             <small>Subscribe to our Newsletter to get Sales Offers &amp; Coupon Codes etc.</small>
                             <div class="input-group">
-                                <input type="email" placeholder="Enter your Email" class="form-control required email" name="widget-subscribe-form-email" aria-required="true">
+                                <input type="email" placeholder="Enter your Email" class="form-control required email"
+                                       name="widget-subscribe-form-email" aria-required="true">
                                 <span class="input-group-btn">
                                         <button type="submit" class="btn"><i class="fa fa-paper-plane"></i></button>
                                     </span>
@@ -173,15 +185,15 @@
         <div class="container">
             <div class="row">
                 @foreach($deliveries as $delivery)
-                <div class="col-lg-4">
-                    <div class="icon-box effect small clean">
-                        <div class="icon">
-                            <a href="#"><i class="fa fa-gift"></i></a>
+                    <div class="col-lg-4">
+                        <div class="icon-box effect small clean">
+                            <div class="icon">
+                                <a href="#"><i class="fa fa-gift"></i></a>
+                            </div>
+                            <h3>{{$delivery->title}}</h3>
+                            <p>{{$delivery->description}}</p>
                         </div>
-                        <h3>{{$delivery->title}}</h3>
-                        <p>{{$delivery->description}}</p>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>

@@ -77,10 +77,6 @@
 {{--                                            @endforeach--}}
 {{--                                        </select>--}}
 {{--                                    </div>--}}
-                                    <div class="form-group col-md-6">
-                                        <label for="gender">Created at</label>
-                                        <input class="form-control" type="date" value="{{ old('created_at') }}" name="created_at" required>
-                                    </div>
                                     <div class="form-group">
                                         <label class="form-label w-100">Image</label>
                                         <input type="file" value="{{ old('image') }}" name="image">

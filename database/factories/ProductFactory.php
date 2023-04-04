@@ -25,7 +25,7 @@ class ProductFactory extends Factory
             'category_id' => Category::query()->inRandomOrder()->first()->id,
             'image' => 'https://source.unsplash.com/random/640x480',
             'is_active' => 1,
-            'price' => rand(5,2000)
+            'price' => rand(5, 2000)
         ];
     }
 }

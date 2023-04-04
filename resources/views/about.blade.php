@@ -29,9 +29,17 @@
                 </div>
                 <div class="col-lg-9">
                     <div class="row">
-                        <div class="col-lg-6">For us, clothes are more than just the right things. Clothing helps a woman express her inner state: after all, there are moments when you want to be a playful coquette, the next day - tender and fragile, and then completely a strict fan of the classics. Clothing affects how other people perceive us, which means it becomes a tool that can do a lot in capable hands. Clothes can give new opportunities: when we like the way we look, we act with confidence. </div>
+                        <div class="col-lg-6">For us, clothes are more than just the right things. Clothing helps a
+                            woman express her inner state: after all, there are moments when you want to be a playful
+                            coquette, the next day - tender and fragile, and then completely a strict fan of the
+                            classics. Clothing affects how other people perceive us, which means it becomes a tool that
+                            can do a lot in capable hands. Clothes can give new opportunities: when we like the way we
+                            look, we act with confidence.
+                        </div>
 
-                        <div class="col-lg-6">We want to be better than yesterday. We know how to hear and analyze criticism and are always ready to change.</div>
+                        <div class="col-lg-6">We want to be better than yesterday. We know how to hear and analyze
+                            criticism and are always ready to change.
+                        </div>
 
                     </div>
                 </div>
