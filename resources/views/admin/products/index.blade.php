@@ -25,6 +25,7 @@
                     <a href="{{ route('admin.products.create') }}" class="btn btn-light"><i class="icon-plus"></i>Add Product</a>
                     <a href="{{ route('admin.products.export.csv') }}" class="btn btn-light"><i class="icon-plus"></i>Export to csv</a>
                     <a href="{{ route('admin.products.export.excel') }}" class="btn btn-light"><i class="icon-plus"></i>Export to excel</a>
+                    <a href="{{ route('admin.products.import.excel') }}" class="btn btn-light"><i class="icon-plus"></i>Import from excel</a>
                 </div>
             </div>
             <div class="row">

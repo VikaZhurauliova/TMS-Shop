@@ -2,8 +2,10 @@
 
 namespace App\Services;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Collection;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -43,6 +45,7 @@ class ProductService
         header('Content-Disposition: attachment; filename=products.xlsx');
         $writer->save('php://output');
         exit;
+
     }
 
     private function prepareExcelData(Worksheet $activeWorksheet, Collection $products)
@@ -92,5 +95,47 @@ class ProductService
             fputcsv($f, $data, ';');
         }
         exit;
+    }
+
+    public function importExcel()
+    {
+        $reader = IOFactory::createReader('Xlsx');
+        $reader->setReadDataOnly(true);
+        $spreadsheet = $reader->load("products.xlsx");
+        $workSheet = $spreadsheet->getActiveSheet();
+        $lastColumn = $workSheet->getHighestColumn();
+        /** @var Row $row */
+        foreach ($workSheet->getRowIterator() as $rowIndex => $row) {
+            if ($rowIndex != 1) {
+                $array = $workSheet->rangeToArray('A' . $rowIndex . ':' . $lastColumn . $rowIndex);
+                $this->processingProductFromExcel($array[0]);
+            }
+        }
+    }
+
+    private function processingProductFromExcel(array $productData)
+    {
+        $product = Product::query()->find($productData[0]);
+
+        if (!$product) {
+            $category = Category::query()->where('name', $productData[7])->first();
+            if (!$category && $productData[6]) {
+                $category = Category::query()->create([
+                    'name' => $productData[7],
+                ]);
+            }
+
+            return Product::query()->create([
+                'name' => $productData[1],
+                'short_description' => $productData[2],
+                'description' => $productData[3],
+                'price' => $productData[4],
+                'sale_price' => $productData[5],
+                'is_active' => $productData[6],
+                'category_id' => $category ? $category->id : null
+            ]);
+        }
+
+        return $product;
     }
 }

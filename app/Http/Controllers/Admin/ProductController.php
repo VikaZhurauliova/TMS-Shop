@@ -89,9 +89,10 @@ class ProductController extends Controller
         $this->productService->exportCsv(Product::all());
     }
 
-//    public function exportCsv(ProductService $productService)
-//    {
-//        $productService->exportCsv(Product::all());
-//    }
+    public function importExcel()
+    {
+        $this->productService->importExcel(Product::all());
+    }
+
 
 }
