@@ -5,19 +5,22 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Mail\SuccessRegister;
 use App\Models\Category;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
     public function getLoginPage()
     {
-        $categories = Category::all();
+
         return view('auth.login', [
-            'categories' => $categories
+
         ]);
     }
 
@@ -58,6 +61,10 @@ class AuthController extends Controller
             'email' => $validated['email'],
             'password' => Hash::make($validated['password'])
         ]);
+        Mail::to('vizhuravleva19@gmail.com')->send(new SuccessRegister($user));
+//        Mail::to('vizhuravleva19@gmail.com')->send(new SuccessRegister($user));
+//
+//        event(new Registered($user));
 
         Auth::login($user);
 
