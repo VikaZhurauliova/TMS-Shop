@@ -28,12 +28,6 @@ Route::group(['controller' => AuthController::class], function () {
     Route::get('/logout', 'logout')->name('auth.logout');
 });
 
-Route::get('/account', [AccountController::class, 'account'])->name('account.show');
-Route::post('/account', [AccountController::class, 'updateAccount'])->name('account.update');
-
-Route::get('/contacts', [ContactsController::class, 'contacts'])->name('contacts');
-Route::post('/contacts', [ContactsController::class, 'sendContacts'])->name('send.contacts');
-
 Route::group(['prefix' => '/wishlist', 'controller' => WishlistController::class, 'middleware' => 'auth'], function () {
     Route::get('/', 'get')->name('wishlist.get');
     Route::post('/{product}/delete', 'delete')->name('wishlist.delete');
@@ -118,6 +112,12 @@ Route::group(['prefix' => '/admin', 'middleware' => 'admin', 'as' => 'admin.'], 
     });
 
 });
+
+Route::get('/account', [AccountController::class, 'account'])->name('account.show');
+Route::post('/account', [AccountController::class, 'updateAccount'])->name('account.update');
+
+Route::get('/contacts', [ContactsController::class, 'contacts'])->name('contacts');
+Route::post('/contacts', [ContactsController::class, 'sendContacts'])->name('send.contacts');
 
 Route::get('/cart', [CartController::class, 'cart'])->name('cart');
 Route::get('/about', [AboutController::class, 'about'])->name('about');
