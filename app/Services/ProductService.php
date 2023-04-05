@@ -118,10 +118,10 @@ class ProductService
         $product = Product::query()->find($productData[0]);
 
         if (!$product) {
-            $category = Category::query()->where('name', $productData[7])->first();
+            $category = Category::query()->where('name', $productData[6])->first();
             if (!$category && $productData[6]) {
                 $category = Category::query()->create([
-                    'name' => $productData[7],
+                    'name' => $productData[6],
                 ]);
             }
 
@@ -131,8 +131,10 @@ class ProductService
                 'description' => $productData[3],
                 'price' => $productData[4],
                 'sale_price' => $productData[5],
-                'is_active' => $productData[6],
-                'category_id' => $category ? $category->id : null
+                'category_id' => $category ? $category->id : null,
+                'is_active' => $productData[7],
+                'created_at' => $productData[8]
+
             ]);
         }
 
