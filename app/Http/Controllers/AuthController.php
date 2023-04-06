@@ -64,6 +64,8 @@ class AuthController extends Controller
 
         Mail::to('vizhuravleva19@gmail.com')->send(new SuccessRegister($user));
 
+        event(new Registered($user));
+
         Auth::login($user);
 
         return redirect()->route('main');

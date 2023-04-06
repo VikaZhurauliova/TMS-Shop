@@ -11,7 +11,7 @@ class UpdateProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,7 +26,7 @@ class UpdateProductRequest extends FormRequest
             'short_description' => 'nullable|min:2',
             'description' => 'nullable',
             'price' => 'min:1|numeric',
-            'sale_price' => 'nullable|numeric',
+            'sale_price' => 'nullable',
             'category_id' => 'nullable|integer',
             'is_active' => 'nullable',
             'tag' => 'nullable',

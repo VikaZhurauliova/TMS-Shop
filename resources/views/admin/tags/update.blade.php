@@ -11,7 +11,7 @@
                 <ul>
                     <li><a href="{{route('admin.main')}}">Admin</a> </li>
                     <li><a href="{{route('admin.tags.index')}}">Tags</a> </li>
-                    <li><a href="{{ route('admin.tags.update') }}">Update</a> </li>
+                    <li><a href="#">Update</a> </li>
                 </ul>
             </div>
         </div>

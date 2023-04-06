@@ -7,10 +7,15 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'main'])->name('main');
+
+Route::get('/email/verify', [\App\Http\Controllers\VerificationController::class, 'view'])->middleware('verification.notice');
+Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'handle'])->middleware(['auth', 'signed'])->name('verification.verify');
+Route::post('/email/verification-notification', [VerificationController::class, 'send'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 Route::group(['prefix' => '/products', 'controller' => ProductController::class], function () {
     Route::get('/', 'products')->name('products.index');

@@ -111,6 +111,7 @@ class ProductService
                 $this->processingProductFromExcel($array[0]);
             }
         }
+
     }
 
     private function processingProductFromExcel(array $productData)

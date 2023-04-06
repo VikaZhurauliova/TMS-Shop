@@ -29,3 +29,4 @@ Route::group(['prefix'=>'/products'], function(){
     Route::delete('/{product}', [ProductController::class, 'delete']);
 });
 
+
