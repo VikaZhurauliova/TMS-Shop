@@ -13,7 +13,6 @@ class Delivery extends Model
 
         'title',
         'description',
-        'created_at',
         'price',
         'sale_price'
     ];

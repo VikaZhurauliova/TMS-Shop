@@ -61,10 +61,8 @@ class AuthController extends Controller
             'email' => $validated['email'],
             'password' => Hash::make($validated['password'])
         ]);
+
         Mail::to('vizhuravleva19@gmail.com')->send(new SuccessRegister($user));
-//        Mail::to('vizhuravleva19@gmail.com')->send(new SuccessRegister($user));
-//
-//        event(new Registered($user));
 
         Auth::login($user);
 

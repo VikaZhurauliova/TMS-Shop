@@ -45,7 +45,7 @@
                             @else
                                 <td><span class="badge badge-pill badge-danger">Not active</span></td>
                             @endif
-                            <td> <a class="ml-2" href="#" data-toggle="tooltip" data-original-title="Edit"><i
+                            <td> <a class="ml-2" href="{{ route('admin.tags.update.view', ['tag' => $tag->id]) }}" data-toggle="tooltip" data-original-title="Edit"><i
                                         class="icon-edit"></i></a>
                                 <a class="ml-2" href="{{ route('admin.tags.delete', ['tag' => $tag->id]) }}" data-toggle="tooltip" data-original-title="Delete"><i
                                         class="icon-trash-2"></i></a>

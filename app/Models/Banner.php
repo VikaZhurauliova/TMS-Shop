@@ -13,7 +13,6 @@ class Banner extends Model
 
         'name' => 'nullable|min:2',
         'description' => 'nullable|min:2',
-        'created_at' => 'nullable',
         'is_active' => 'nullable',
     ];
 }

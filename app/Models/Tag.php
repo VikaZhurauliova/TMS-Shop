@@ -11,7 +11,6 @@ class Tag extends Model
 
     protected $fillable = [
         'title',
-        'created_at',
         'is_active'
     ];
 }

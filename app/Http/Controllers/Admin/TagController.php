@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateTagRequest;
+use App\Http\Requests\UpdateTagRequest;
+use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
@@ -51,17 +53,24 @@ class TagController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Tag $tag)
     {
-        //
+        return view('admin.tags.update', [
+            'tag' => $tag
+
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateTagRequest $request, Tag $tag)
     {
-        //
+        $tag->update($request->validated());
+
+        session()->flash('success', 'Tag has been successfully updated');
+
+        return redirect()->back();
     }
 
     /**
