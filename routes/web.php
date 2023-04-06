@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'main'])->name('main');
 
+Route::get('/changeLang', [MainController::class, 'changeLang'])->name('changeLang');
+
 Route::get('/email/verify', [\App\Http\Controllers\VerificationController::class, 'view'])->middleware('verification.notice');
 Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'handle'])->middleware(['auth', 'signed'])->name('verification.verify');
 Route::post('/email/verification-notification', [VerificationController::class, 'send'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');

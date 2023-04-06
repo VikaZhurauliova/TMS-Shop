@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="{{route('main')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Document title -->
-    <title>POLO | The Multi-Purpose HTML5 Template</title>
+    <title>{{ __('main_title') }}</title>
     <!-- Stylesheets & Fonts -->
     <link href="{{'/css/plugins.css'}}" rel="stylesheet">
     <link href="{{'/css/style.css'}}" rel="stylesheet">
@@ -47,11 +47,18 @@
                         </li>
                         <li>
                             <div class="p-dropdown">
-                                <a href="#"><i class="icon-globe"></i><span>EN</span></a>
+                                <a href="#"><i class="icon-globe"></i>
+                                    <span>
+                                        @if(session()->get('locale') == 'ru')
+                                            RU
+                                        @else
+                                            EN
+                                        @endif
+                                    </span>
+                                </a>
                                 <ul class="p-dropdown-content">
-                                    <li><a href="#">French</a></li>
-                                    <li><a href="#">Spanish</a></li>
-                                    <li><a href="#">English</a></li>
+                                    <li><a href="{{ route('changeLang', ['lang' => 'en']) }}">English</a></li>
+                                    <li><a href="{{ route('changeLang', ['lang' => 'ru']) }}">Русский</a></li>
                                 </ul>
                             </div>
                         </li>
