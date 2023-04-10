@@ -86,7 +86,7 @@
                                 </li>
                                 <li><a href="{{ route('about') }}">About us</a></li>
                                 <li><a href="{{ route('contacts') }}">Contacts</a></li>
-                                <li><a href="#">Cart</a></li>
+                                <li><a href="{{ route('cart.get') }}">Cart</a></li>
                                 @auth
                                     <li><a href="{{ route('account.show') }}">My account</a></li>
                                     <li><a href="{{ route('wishlist.get') }}">WishList</a></li>
