@@ -86,10 +86,10 @@
                                 </li>
                                 <li><a href="{{ route('about') }}">About us</a></li>
                                 <li><a href="{{ route('contacts') }}">Contacts</a></li>
+                                <li><a href="#">Cart</a></li>
                                 @auth
                                     <li><a href="{{ route('account.show') }}">My account</a></li>
                                     <li><a href="{{ route('wishlist.get') }}">WishList</a></li>
-                                    <li><a href="#">Cart</a></li>
                                     <li><a href="{{ route('auth.logout') }}">Logout</a></li>
                                     @if(Auth::user()->is_admin)
                                         <li class="dropdown"><a href="{{route('admin.main')}}">Admin</a>
@@ -183,7 +183,28 @@
         <span data-notify="icon"></span> <span data-notify="title">{{ session('error') }}</span>
     </div>
 @endif
-
+<div class="modal fade" id="modal-checkout" tabindex="-1" role="modal" aria-labelledby="modal-label-2" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modal-label-2" class="modal-title">Attention</h4>
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>You must be logged in to place an order.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="float-left">
+                    <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!--Plugins-->
 <script src="{{ asset('/js/jquery.js') }}"></script>
 <script src="{{ asset('/js/plugins.js') }}"></script>

@@ -41,6 +41,12 @@ Route::group(['prefix' => '/wishlist', 'controller' => WishlistController::class
     Route::post('/{product}/add', 'add')->name('wishlist.add');
 });
 
+Route::group(['prefix' => '/cart', 'controller' => CartController::class], function () {
+    Route::get('/', 'getCart')->name('cart.get');
+    Route::post('/{product}/add', 'add')->name('cart.add');
+    Route::get('/{product}/remove', 'remove')->name('cart.remove');
+});
+
 Route::group(['prefix' => '/admin', 'middleware' => 'admin', 'as' => 'admin.'], function () {
 
     Route::get('/', [\App\Http\Controllers\Admin\MainController::class, 'main'])->name('main');
