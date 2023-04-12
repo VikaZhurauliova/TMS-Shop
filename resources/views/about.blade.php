@@ -8,8 +8,7 @@
             <div class="container">
                 <div class="slide-captions text-center text-light">
                     <!-- Captions -->
-                    <span class="strong">Who we are</span>
-                    <h1>About our company</h1>
+                    <h1>{{__('about_our_company')}}</h1>
                     <!-- end: Captions -->
                 </div>
             </div>
@@ -23,24 +22,14 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="heading-text heading-section">
-                        <h2>THE COMPANY</h2>
+                        <h2>{{__('about_us')}}</h2>
 
                     </div>
                 </div>
                 <div class="col-lg-9">
                     <div class="row">
-                        <div class="col-lg-6">For us, clothes are more than just the right things. Clothing helps a
-                            woman express her inner state: after all, there are moments when you want to be a playful
-                            coquette, the next day - tender and fragile, and then completely a strict fan of the
-                            classics. Clothing affects how other people perceive us, which means it becomes a tool that
-                            can do a lot in capable hands. Clothes can give new opportunities: when we like the way we
-                            look, we act with confidence.
-                        </div>
-
-                        <div class="col-lg-6">We want to be better than yesterday. We know how to hear and analyze
-                            criticism and are always ready to change.
-                        </div>
-
+                        <div class="col-lg-6">{{__('company_description_1')}}</div>
+                        <div class="col-lg-6">{{__('company_description_2')}}</div>
                     </div>
                 </div>
 
@@ -51,28 +40,28 @@
         <div class="row">
             <div style="background-color:#917d5d" class="col-lg-4">
                 <h1 class="text-lg text-uppercase">01.</h1>
-                <h3>CONCEPT</h3>
-                <span>Those who are ready for change, who appreciate femininity and do not want to give up comfort.</span>
+                <h3>{{__('concept')}}</h3>
+                <span>{{__('concept_description')}}</span>
             </div>
 
             <div style="background-color:#a08c6c" class="col-lg-4">
                 <h1 class="text-lg text-uppercase">02.</h1>
-                <h3>DEVELOPMENT</h3>
-                <span>We follow trends, but in the first place we always have high-quality fabrics that will not deteriorate in a couple of washes, and thoughtful cuts for a perfect fit.</span>
+                <h3>{{__('development')}}</h3>
+                <span>{{__('development_description')}}</span>
             </div>
 
             <div style="background-color:#ad9979" class="col-lg-4">
                 <h1 class="text-lg text-uppercase">03.</h1>
-                <h3>TESTING</h3>
-                <span>Our main goal is a satisfied customer who will receive quality products in the shortest possible time.</span>
+                <h3>{{__('testing')}}</h3>
+                <span>{{__('testing_description')}}</span>
             </div>
         </div>
     </section>
     <section class="background-grey">
         <div class="container">
             <div class="heading-text heading-section text-center">
-                <h2>OUR TEAM</h2>
-                <span class="lead">We are growing and developing every day, and it's all thanks to you.</span>
+                <h2>{{__('our_team')}}</h2>
+                <span class="lead">{{__('our_team_description')}}</span>
             </div>
             <div class="row team-members team-members-shadow m-b-40">
                 <div class="col-lg-3">
@@ -81,9 +70,9 @@
                             <img src="{{asset('/images/team/1.jpg')}}">
                         </div>
                         <div class="team-desc">
-                            <h3>Alex Shwed</h3>
-                            <span>Sales manager</span>
-                            <p>Your convenient shopping is us! </p>
+                            <h3>{{__('employee_1')}}</h3>
+                            <span>{{__('employee_1_title')}}</span>
+                            <p>{{__('employee_1_description')}} </p>
                             <div class="align-center">
                                 <a class="btn btn-xs btn-slide btn-light" href="#">
                                     <i class="fab fa-facebook-f"></i>
@@ -111,9 +100,9 @@
                             <img src="{{asset("/images/team/2.jpg")}}">
                         </div>
                         <div class="team-desc">
-                            <h3>Mega Derry</h3>
-                            <span>Creative director</span>
-                            <p>Our young company of specialists lives by work, improves every second.</p>
+                            <h3>{{__('employee_2')}}</h3>
+                            <span>{{__('employee_2_title')}}</span>
+                            <p>{{__('employee_2_description')}}</p>
                             <div class="align-center">
                                 <a class="btn btn-xs btn-slide btn-light" href="#">
                                     <i class="fab fa-facebook-f"></i>
@@ -141,9 +130,9 @@
                             <img src="{{asset('/images/team/3.jpg')}}">
                         </div>
                         <div class="team-desc">
-                            <h3>Elena Blame</h3>
-                            <span>SMM director</span>
-                            <p>Thousands of positive customer reviews motivate us to do even better work.</p>
+                            <h3>{{__('employee_3')}}</h3>
+                            <span>{{__('employee_3_title')}}</span>
+                            <p>{{__('employee_3_description')}}</p>
                             <div class="align-center">
                                 <a class="btn btn-xs btn-slide btn-light" href="#">
                                     <i class="fab fa-facebook-f"></i>
@@ -171,9 +160,9 @@
                             <img src="{{asset('/images/team/4.jpg')}}">
                         </div>
                         <div class="team-desc">
-                            <h3>Linda Perl</h3>
-                            <span>Content maker</span>
-                            <p>We are growing and developing every day, and it's all thanks to you.</p>
+                            <h3>{{__('employee_4')}}</h3>
+                            <span>{{__('employee_4_title')}}</span>
+                            <p>{{__('employee_4_description')}}</p>
                             <div class="align-center">
                                 <a class="btn btn-xs btn-slide btn-light" href="#">
                                     <i class="fab fa-facebook-f"></i>

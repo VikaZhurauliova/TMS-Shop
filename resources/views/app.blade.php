@@ -75,7 +75,7 @@
                     <div class="container">
                         <nav>
                             <ul>
-                                <li class="dropdown"><a href="{{route('products.index')}}">Shop</a>
+                                <li class="dropdown"><a href="{{route('products.index')}}">{{__('shop')}}</a>
                                     <ul class="dropdown-menu">
                                         @foreach($categories as $category)
                                             <li class="dropdown-submenu"><a
@@ -84,21 +84,21 @@
                                         @endforeach
                                     </ul>
                                 </li>
-                                <li><a href="{{ route('about') }}">About us</a></li>
-                                <li><a href="{{ route('contacts') }}">Contacts</a></li>
-                                <li><a href="{{ route('cart.get') }}">Cart</a></li>
+                                <li><a href="{{ route('about') }}">{{__('about_us')}}</a></li>
+                                <li><a href="{{ route('contacts') }}">{{__('contacts')}}</a></li>
+                                <li><a href="{{ route('cart.get') }}">{{__('cart')}}</a></li>
                                 @auth
-                                    <li><a href="{{ route('account.show') }}">My account</a></li>
-                                    <li><a href="{{ route('wishlist.get') }}">WishList</a></li>
-                                    <li><a href="{{ route('auth.logout') }}">Logout</a></li>
+                                    <li><a href="{{ route('account.show') }}">{{__('account')}}</a></li>
+                                    <li><a href="{{ route('wishlist.get') }}">{{__('wishlist')}}</a></li>
+                                    <li><a href="{{ route('auth.logout') }}">{{__('logout')}}</a></li>
                                     @if(Auth::user()->is_admin)
-                                        <li class="dropdown"><a href="{{route('admin.main')}}">Admin</a>
+                                        <li class="dropdown"><a href="{{route('admin.main')}}">{{__('admin')}}</a>
                                         </li>
                                     @endif
                                 @endauth
                                 @guest
-                                    <li><a href="{{ route('auth.login') }}">Login</a></li>
-                                    <li><a href="{{ route('auth.register') }}">Register</a></li>
+                                    <li><a href="{{ route('auth.login') }}">{{__('login')}}</a></li>
+                                    <li><a href="{{ route('auth.register') }}">{{__('register')}}</a></li>
                                 @endguest
                             </ul>
                         </nav>
@@ -119,43 +119,43 @@
                     <div class="col-lg-5">
                         <div class="widget">
 
-                            <p class="mb-5">We can surprise you.</p>
-                            <a href="#" class="btn btn-inverted" target="_blank">Purchase now</a>
+                            <p class="mb-5">{{__('action')}}</p>
+                            <a href="#" class="btn btn-inverted" target="_blank">{{__('purchase')}}</a>
                         </div>
                     </div>
                     <div class="col-lg-7">
                         <div class="row">
                             <div class="col-lg-3">
                                 <div class="widget">
-                                    <div class="widget-title">PROMOTIONS</div>
+                                    <div class="widget-title">{{__('promotions')}}</div>
                                     <ul class="list">
-                                        <li><a href="#">GIFT CARDS</a></li>
-                                        <li><a href="#">SIGN UP FOR EMAIL</a></li>
-                                        <li><a href="#">BECOME A MEMBER</a></li>
-                                        <li><a href="{{ route('contacts') }}">SEND US FEEDBACK</a></li>
+                                        <li><a href="#">{{__('gift_cart')}}</a></li>
+                                        <li><a href="#">{{__('sign_up')}}</a></li>
+                                        <li><a href="#">{{__('become_member')}}</a></li>
+                                        <li><a href="{{ route('contacts') }}">{{__('send_feedback')}}</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="widget">
-                                    <div class="widget-title">ABOUT US</div>
+                                    <div class="widget-title">{{__('about_us')}}</div>
                                     <ul class="list">
-                                        <li><a href="#">News</a></li>
-                                        <li><a href="#">Careers</a></li>
-                                        <li><a href="#">Investors</a></li>
-                                        <li><a href="#">Purpose</a></li>
+                                        <li><a href="#">{{__('news')}}</a></li>
+                                        <li><a href="#">{{__('careers')}}</a></li>
+                                        <li><a href="#">{{__('investors')}}</a></li>
+                                        <li><a href="#">{{__('purpose')}}</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="widget">
-                                    <div class="widget-title">GET HELP</div>
+                                    <div class="widget-title">{{__('help')}}</div>
                                     <ul class="list">
-                                        <li><a href="#">Order Status</a></li>
-                                        <li><a href="#">Shipping and Delivery</a></li>
-                                        <li><a href="#">Returns</a></li>
-                                        <li><a href="#">Payment Options</a></li>
-                                        <li><a href="{{route('contacts')}}">Contacts us</a></li>
+                                        <li><a href="#">{{__('order_status')}}</a></li>
+                                        <li><a href="#">{{__('shipping')}}</a></li>
+                                        <li><a href="#">{{__('returns')}}</a></li>
+                                        <li><a href="#">{{__('payment')}} </a></li>
+                                        <li><a href="{{route('contacts')}}">{{__('contacts')}}</a></li>
                                     </ul>
                                 </div>
                             </div>

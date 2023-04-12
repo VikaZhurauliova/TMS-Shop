@@ -43,11 +43,11 @@
                                     </td>
                                     <td class="cart-product-thumbnail">
                                         <a href="{{ route('products.show', ['product' => $product->id]) }}">
-                                            <img src="{{ $product->image }}" alt="{{ $product->title }}">
+                                            <img src="{{ $product->image }}" alt="{{ $product->name }}">
                                         </a>
                                     </td>
                                     <td>
-                                        <div class="cart-product-thumbnail-name">{{ $product->title }}</div>
+                                        <div class="cart-product-thumbnail-name">{{ $product->name }}</div>
                                     </td>
                                     <td class="cart-product-description">
                                         <p>{{ $product->short_description }}</p>

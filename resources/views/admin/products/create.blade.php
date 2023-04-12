@@ -52,6 +52,13 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
+                                        <label for="gender">Tag</label>
+                                        <select class="form-control" name="tags" required>
+                                            <option value="">Select tag</option>
+                                            @foreach($tags as $tag)
+                                                <option value="{{ $tag->id }}" @if(old('tag') == $tag->id) selected @endif>{{ $tag->title }}</option>
+                                            @endforeach
+                                        </select>
                                         <label for="gender">Category</label>
                                         <select class="form-control" name="category_id" required>
                                             <option value="">Select category</option>

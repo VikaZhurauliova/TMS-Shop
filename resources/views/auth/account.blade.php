@@ -6,8 +6,8 @@
                 <div class="content col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <span class="h4">Profile</span>
-                            <p class="text-muted">Change your account information</p>
+                            <span class="h4">{{__('profile')}}</span>
+                            <p class="text-muted">{{__('change_account_information')}}</p>
                         </div>
                         <div class="card-body">
                             <form action="{{ route('account.update') }}" method="POST">
@@ -16,17 +16,15 @@
                                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                                         <li class="nav-item">
                                             <a class="nav-link active" id="home-tab" data-toggle="tab"
-                                               href="#tabProfile" role="tab" aria-controls="home" aria-selected="true">Profile
-                                                information</a>
+                                               href="#tabProfile" role="tab" aria-controls="home" aria-selected="true">{{__('profile_information')}}</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" id="contact-tab" data-toggle="tab" href="#tabAddress"
-                                               role="tab" aria-controls="contact" aria-selected="false">Address
-                                                Information</a>
+                                               role="tab" aria-controls="contact" aria-selected="false">{{__('address_information')}}</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#tabPassword"
-                                               role="tab" aria-controls="profile" aria-selected="false">Password</a>
+                                               role="tab" aria-controls="profile" aria-selected="false">{{__('password')}}</a>
                                         </li>
                                     </ul>
                                     <div class="tab-content" id="myTabContent">
@@ -34,39 +32,39 @@
                                              aria-labelledby="tab-profile">
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="first_name">First name</label>
+                                                    <label for="first_name">{{__('name')}}</label>
                                                     <input type="text" class="form-control" name="first_name"
                                                            value="{{ $user->information?->first_name }}"
-                                                           placeholder="Enter your first name">
+                                                           placeholder="{{__('enter_name')}}">
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label for="last_name">Last name</label>
+                                                    <label for="last_name">{{__('last_name')}}</label>
                                                     <input type="text" class="form-control" name="last_name"
                                                            value="{{ $user->information?->last_name }}"
-                                                           placeholder="Enter your last name">
+                                                           placeholder="{{__('enter_last_name')}}">
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="gender">Date of Birth</label>
+                                                    <label for="gender">{{__('date_of_birth')}}</label>
                                                     <input class="form-control" type="date"
                                                            value="{{ $user->information?->birthday }}" name="birthday">
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label for="sex">Gender</label>
+                                                    <label for="sex">{{__('gender')}}</label>
                                                     <select class="form-control" name="sex">
-                                                        <option value="">Select your gender</option>
-                                                        <option value="female">Female</option>
-                                                        <option value="male">Male</option>
+                                                        <option value="">{{__('select_gender')}}</option>
+                                                        <option value="female">{{__('female')}}</option>
+                                                        <option value="male">{{__('male')}}</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="phone">Telephone</label>
+                                                    <label for="phone">{{__('telephone')}}</label>
                                                     <input class="form-control" type="tel"
                                                            value="{{ $user->information?->phone }}" name="phone"
-                                                           placeholder="Enter your phone number">
+                                                           placeholder="{{__('enter_telephone')}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -74,7 +72,7 @@
                                              aria-labelledby="tab-billing">
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="country">Country</label>
+                                                    <label for="country">{{__('country')}}</label>
                                                     <select name="country" class="form-control">
                                                         <option value=""></option>
                                                         @foreach($geos as $key => $geo)
@@ -88,10 +86,10 @@
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label for="city">City</label>
+                                                    <label for="city">{{__('city')}}</label>
                                                     <input type="text" class="form-control"
                                                            value="{{ $user->information?->city }}" name="city"
-                                                           placeholder="Enter your City">
+                                                           placeholder="{{__('enter_city')}}">
                                                 </div>
                                             </div>
                                             <div class="form-row">
@@ -116,7 +114,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="form-control-label">Old password</label>
+                                                        <label class="form-control-label">{{__('old_password')}}</label>
                                                         <input class="form-control" type="password">
                                                     </div>
                                                 </div>
@@ -124,13 +122,13 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="form-control-label">New password</label>
+                                                        <label class="form-control-label">{{__('new_password')}}</label>
                                                         <input class="form-control" type="password">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="form-control-label">Confirm password</label>
+                                                        <label class="form-control-label">{{__('confirm_password')}}</label>
                                                         <input class="form-control" type="password">
                                                     </div>
                                                 </div>
@@ -139,7 +137,7 @@
                                     </div>
                                 </div>
                                 <div class="mt-4">
-                                    <button type="submit" class="btn btn-sm">Save changes</button>
+                                    <button type="submit" class="btn btn-sm">{{__('save_changes')}}</button>
                                 </div>
                             </form>
                         </div>

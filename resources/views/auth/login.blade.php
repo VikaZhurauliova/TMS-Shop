@@ -14,31 +14,31 @@
                                     </div>--}}
                     <div class="row">
                         <div class="col-lg-5 center p-50 background-white b-r-6">
-                            <h3>Login to your Account</h3>
+                            <h3>{{__('login_to_account')}}</h3>
                             <form action="{{ route('auth.login')}}" method="POST">
                                 @csrf
                                 <div class="form-group">
-                                    <label class="sr-only">Username or Email</label>
+                                    <label class="sr-only">{{__('username_email')}}</label>
                                     <input name="email" type="text" class="form-control"
-                                           placeholder="Username or Email">
+                                           placeholder="{{__('username_email')}}">
                                 </div>
                                 <div class="form-group m-b-5">
-                                    <label class="sr-only">Password</label>
-                                    <input name='password' type="password" class="form-control" placeholder="Password">
+                                    <label class="sr-only">{{__('password')}}</label>
+                                    <input name='password' type="password" class="form-control" placeholder="{{__('enter_password')}}">
                                 </div>
                                 <div class="form-group form-inline text-left">
                                     <div class="form-check">
                                         <label>
-                                            <input type="checkbox"><small class="m-l-10"> Remember me</small>
+                                            <input type="checkbox"><small class="m-l-10"> {{__('remember_me')}}</small>
                                         </label>
                                     </div>
                                 </div>
                                 <div class="text-left form-group">
-                                    <button type="submit" class="btn">Login</button>
+                                    <button type="submit" class="btn">{{__('login')}}</button>
                                 </div>
                             </form>
-                            <p class="small">Forget password? <a href="{{ route('password.request') }}">Click here</a></p>
-                            <p class="small">Don't have an account yet? <a href="{{ route('auth.registerPage') }}">Register New Account</a></p>
+                            <p class="small">{{__('forget_password')}}<a href="{{ route('password.request') }}">{{__('click_here')}}</a></p>
+                            <p class="small">{{__('do_not_have_account')}}<a href="{{ route('auth.registerPage') }}">{{__('register_new_account')}}</a></p>
                             </p>
                         </div>
                     </div>

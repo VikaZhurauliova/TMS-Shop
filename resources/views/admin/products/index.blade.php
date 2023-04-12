@@ -39,8 +39,8 @@
                             <th>Price</th>
                             <th>Sale</th>
                             <th>Category</th>
-                            <th>Status</th>
 {{--                            <th>Tag</th>--}}
+                            <th>Status</th>
                             <th>Created at</th>
                             <th>image</th>
                         </thead>
@@ -53,6 +53,7 @@
                             <td>{{$product->price}}</td>
                             <td>{{$product->sale_price}}</td>
                             <td>{{$product->category?->name}}</td>
+{{--                            <td>{{$tag?->title}}</td>--}}
                             @if($product->is_active)
                                 <td><span class="badge badge-pill badge-primary">Active</span></td>
                             @else

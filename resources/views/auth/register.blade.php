@@ -17,29 +17,28 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <h3>Register New Account</h3>
-                                        <p>Create an account by entering the information below. If you are a returning
-                                            customer please login at the top of the page.</p>
+                                        <h3>{{__('register_new_account')}}</h3>
+                                        <p>{{__('register_new_account_information')}}</p>
                                     </div>
                                     <div class="col-lg-12 form-group">
-                                        <label class="sr-only">Name</label>
-                                        <input value="{{ old('name') }}" type="text" name="name" placeholder="Name"
+                                        <label class="sr-only">{{__('name')}}</label>
+                                        <input value="{{ old('name') }}" type="text" name="name" placeholder="{{__('name')}}"
                                                class="form-control">
                                     </div>
                                     <div class="col-lg-12 form-group">
-                                        <label class="sr-only">Email</label>
-                                        <input value="{{ old('email') }}" type="email" name="email" placeholder="Email"
+                                        <label class="sr-only">{{__('email')}}</label>
+                                        <input value="{{ old('email') }}" type="email" name="email" placeholder="{{__('email')}}"
                                                class="form-control" required>
                                     </div>
                                     <div class="col-lg-12 form-group">
-                                        <label class="sr-only">Password</label>
-                                        <input type="password" name="password" placeholder="Password"
+                                        <label class="sr-only">{{__('password')}}</label>
+                                        <input type="password" name="password" placeholder="{{__('password')}}"
                                                class="form-control" required>
                                     </div>
                                     <div class="col-lg-12 form-group">
-                                        <label class="sr-only">Confirm password</label>
+                                        <label class="sr-only">{{__('confirm_password')}}</label>
                                         <input type="password" name="password_confirmation"
-                                               placeholder="Password confirm" class="form-control" required>
+                                               placeholder="{{__('confirm_password')}}" class="form-control" required>
                                     </div>
                                     <div class="col-lg-12 form-group">
                                         @foreach($errors->all() as $key => $error)
@@ -51,7 +50,7 @@
                                         @endforeach
                                     </div>
                                     <div class="col-lg-12 form-group">
-                                        <button class="btn" type="submit">Register New Account</button>
+                                        <button class="btn" type="submit">{{__('register_new_account')}}</button>
                                     </div>
                                 </div>
                             </form>

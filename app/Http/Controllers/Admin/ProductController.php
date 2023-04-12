@@ -12,10 +12,6 @@ use App\Services\ProductService;
 use Illuminate\Http\Request;
 
 
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-
 
 class ProductController extends Controller
 {
@@ -53,12 +49,13 @@ class ProductController extends Controller
         return redirect()->route('admin.products.index');
     }
 
-    public function edit(Product $product)
+    public function edit(Product $product, Tag $tag)
     {
         return view('admin.products.update', [
 
             'product' => $product,
-            'categories' => Category::query()->where('is_active', 1)->get()
+            'categories' => Category::query()->where('is_active', 1)->get(),
+            'tag' => $tag
 
         ]);
     }
