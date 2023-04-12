@@ -35,22 +35,22 @@ class ProductService
         return $products->where('is_active', 1)->paginate(12);
     }
 
-    public function exportExcel(Collection $products)
+    public function exportExcel(Collection $feedbacks)
     {
         $spreadsheet = new Spreadsheet();
         $activeWorksheet = $spreadsheet->getActiveSheet();
-        $this->prepareExcelData($activeWorksheet, $products);
+        $this->prepareExcelData($activeWorksheet, $feedbacks);
         $writer = new Xlsx($spreadsheet);
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment; filename=products.xlsx');
+        header('Content-Disposition: attachment; filename=feedbacks.xlsx');
         $writer->save('php://output');
         exit;
 
     }
 
-    private function prepareExcelData(Worksheet $activeWorksheet, Collection $products)
+    private function prepareExcelData(Worksheet $activeWorksheet, Collection $feedbacks)
     {
-        $columns = ['ID', 'Name', 'Short description', 'Description', 'Price', 'Sale price', 'Status', 'Category name', 'Created at', 'Image'];
+        $columns = ['ID', 'Name', 'Subject', 'Message', 'Email', 'Created at'];
         for ($i = 0; $i < count($columns); $i++) {
             $activeWorksheet->setCellValue(chr(65 + $i) . '1', $columns[$i]);
         }

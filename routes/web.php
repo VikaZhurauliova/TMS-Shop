@@ -100,8 +100,10 @@ Route::group(['prefix' => '/admin', 'middleware' => 'admin', 'as' => 'admin.'], 
     });
 
     Route::group(['prefix' => '/feedback', 'as' => 'feedback.'], function () {
-        Route::get('/', [\App\Http\Controllers\Admin\FormContactController::class, 'index'])->name('index');
-        Route::get('/delete/{feedback}', [\App\Http\Controllers\Admin\FormContactController::class, 'destroy'])->name('delete');
+        Route::get('/', [\App\Http\Controllers\Admin\FeedbackController::class, 'index'])->name('index');
+        Route::get('/delete/{feedback}', [\App\Http\Controllers\Admin\FeedbackController::class, 'destroy'])->name('delete');
+        Route::get('/export-csv', [\App\Http\Controllers\Admin\FeedbackController::class, 'exportCsv'])->name('export.csv');
+        Route::get('/export-excel', [\App\Http\Controllers\Admin\FeedbackController::class, 'exportExcel'])->name('export.excel');
     });
 
     Route::group(['prefix' => '/tags', 'as' => 'tags.'], function () {

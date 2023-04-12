@@ -22,7 +22,8 @@
             <!-- DataTable -->
             <div class="row mb-3">
                 <div class="col-lg-6">
-                    <a class="btn btn-light"><i class="icon-plus"></i>Export to csv</a>
+                    <a href="{{ route('admin.feedback.export.csv') }}" class="btn btn-light"><i class="icon-plus"></i>Export to csv</a>
+                    <a href="{{ route('admin.feedback.export.excel') }}" class="btn btn-light"><i class="icon-plus"></i>Export to excel</a>
                 </div>
             </div>
             <div class="row">
@@ -51,18 +52,14 @@
                             @else
                                 <td><span class="badge badge-pill badge-danger">Not active</span></td>
                             @endif
-                            <td> <a class="ml-2" href="#" data-toggle="tooltip" data-original-title="Edit"><i
-                                        class="icon-edit"></i></a>
+                            <td>
                                 <a class="ml-2" href="{{ route('admin.feedback.delete', ['feedback' => $feedback->id]) }}" data-toggle="tooltip" data-original-title="Delete"><i
                                         class="icon-trash-2"></i></a>
-
                             </td>
                         </tr>
                         @endforeach
                         </tbody>
                     </table>
-                    <hr>
-                    {!! $feedbacks->appends(Request::all())->links() !!}
                 </div>
             </div>
             <!-- end: DataTable -->
