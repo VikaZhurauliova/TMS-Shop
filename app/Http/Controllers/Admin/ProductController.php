@@ -69,7 +69,7 @@ class ProductController extends Controller
 
         session()->flash('success', 'Product has been successfully updated');
 
-        return redirect()->back();
+        return redirect()->route('admin.products.index');
     }
 
     public function destroy(Product $product)

@@ -11,7 +11,7 @@
                 <ul>
                     <li><a href="{{ route('main') }}">Home</a>
                     </li>
-                    <li><a href="{{route('products.index')}}">Shop</a>
+                    <li><a href="#">Shop</a>
                     </li>
                 </ul>
             </div>

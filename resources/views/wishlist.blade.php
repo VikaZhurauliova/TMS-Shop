@@ -55,13 +55,15 @@
                                         </form>
                                     </td>
                                     <td class="cart-product-thumbnail">
-                                        <a href="#">
+                                        <a href="{{ route('products.show', ['product' => $product->id]) }}">
                                             <img src="{{ $product->image }}" alt="{{ $product->title }}">
                                         </a>
                                         <div class="cart-product-thumbnail-name">{{ $product->title }}</div>
                                     </td>
                                     <td class="cart-product-description">
+                                        <a href="{{ route('products.show', ['product' => $product->id]) }}">
                                         <p>{{ $product->description }}</p>
+                                        </a>
                                     </td>
                                     <td class="cart-product-price">
                                         <span class="amount">${{ $product->price }}</span>
@@ -70,7 +72,9 @@
                             @endforeach
                             </tbody>
                         </table>
+                        <a href="{{ route('cart.get') }}">
                         <button class="btn" type="submit" id="form-submit"><i></i>&nbsp;Buy now</button>
+                        </a>
                     </div>
                 </div>
             </div>

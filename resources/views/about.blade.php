@@ -113,7 +113,7 @@
                         <div class="team-desc">
                             <h3>Mega Derry</h3>
                             <span>Creative director</span>
-                            <p>Our young company of specialists lives by work, enjoys it and improves every second.</p>
+                            <p>Our young company of specialists lives by work, improves every second.</p>
                             <div class="align-center">
                                 <a class="btn btn-xs btn-slide btn-light" href="#">
                                     <i class="fab fa-facebook-f"></i>

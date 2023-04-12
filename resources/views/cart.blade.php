@@ -43,7 +43,7 @@
                                     </td>
                                     <td class="cart-product-thumbnail">
                                         <a href="{{ route('products.show', ['product' => $product->id]) }}">
-                                            <img src="{{ $product->mainImage()?->path }}" alt="{{ $product->title }}">
+                                            <img src="{{ $product->image }}" alt="{{ $product->title }}">
                                         </a>
                                     </td>
                                     <td>
