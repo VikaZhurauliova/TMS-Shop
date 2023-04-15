@@ -36,7 +36,10 @@
                             <th>Subject</th>
                             <th>Message</th>
                             <th>Created at</th>
-                            <th>active</th>
+                            <th>File name</th>
+                            <th>File size</th>
+                            <th>File type</th>
+                            <th>Active</th>
                         </thead>
                         <tbody>
                         @foreach($feedbacks as $feedback)
@@ -46,7 +49,9 @@
                             <td>{{$feedback->subject}}</td>
                             <td>{{$feedback->message}}</td>
                             <td>{{$feedback->created_at}}</td>
-
+                            <td>{{$feedback->file_name}}</td>
+                            <td>{{$feedback->file_size}}</td>
+                            <td>{{$feedback->file_type}}</td>
                             @if($feedback->is_active)
                             <td><span class="badge badge-pill badge-primary">Active</span></td>
                             @else

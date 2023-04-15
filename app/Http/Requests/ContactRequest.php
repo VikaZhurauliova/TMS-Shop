@@ -26,6 +26,9 @@ class ContactRequest extends FormRequest
             'email' => 'required|email|max:55',
             'message' => 'required|max:255',
             'subject' => '',
+            'file_name' => 'nullable',
+            'file_size' => 'nullable',
+            'file_type' => 'nullable'
         ];
     }
 

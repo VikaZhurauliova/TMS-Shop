@@ -89,7 +89,6 @@
                                         <input multiple type="file" value="{{ old('image') }}" name="image[]">
                                     </div>
                                 </div>
-                                <h1>{{json_encode($errors->all())}}</h1>
                                 <button type="submit" class="btn m-t-30 mt-3">Submit</button>
                             </form>
                         </div>

@@ -26,7 +26,7 @@ class FeedbackService
     }
        private function prepareExcelData(Worksheet $activeWorksheet, Collection $feedbacks)
     {
-        $columns = ['ID', 'Name', 'Subject', 'Message', 'Email', 'Created at'];
+        $columns = ['ID', 'Name', 'Subject', 'Message', 'Email', 'Created at', 'File name'];
         for ($i = 0; $i < count($columns); $i++) {
             $activeWorksheet->setCellValue(chr(65 + $i) . '1', $columns[$i]);
         }
@@ -39,6 +39,7 @@ class FeedbackService
             $activeWorksheet->setCellValue('D' . $index, $feedback->message);
             $activeWorksheet->setCellValue('E' . $index, $feedback->email);
             $activeWorksheet->setCellValue('F' . $index, $feedback->created_at);
+            $activeWorksheet->setCellValue('G' . $index, $feedback->file_name);
 
         }
     }
@@ -49,7 +50,7 @@ class FeedbackService
         header('Content-Disposition: attachment; filename=feedbacks.csv');
 
         $f = fopen('php://output', 'w');
-        fputcsv($f,  ['ID', 'Name', 'Subject', 'Message', 'Email', 'Created at'], ';');
+        fputcsv($f,  ['ID', 'Name', 'Subject', 'Message', 'Email', 'Created at', 'File name'], ';');
 
         foreach ($feedbacks as $feedback) {
             $data = [
@@ -59,6 +60,8 @@ class FeedbackService
                 $feedback->message,
                 $feedback->email,
                 $feedback->created_at,
+                $feedback->file_name,
+                $feedback->file_size,
             ];
             fputcsv($f, $data, ';');
         }

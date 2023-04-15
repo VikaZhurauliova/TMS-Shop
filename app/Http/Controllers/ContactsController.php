@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Contacts;
 use App\Models\FormContact;
 use Illuminate\Http\Request;
@@ -24,6 +23,8 @@ class ContactsController extends Controller
         $file = $request->file('file');
         $fileName = $file->getClientOriginalName();
         $file->storeAs('/contacts',$fileName);
+        $fileSize = $file->getSize();
+        $fileType =$file->getClientOriginalExtension();
 
         $name = $request->input('name');
         $subject = $request->input('subject');
@@ -34,7 +35,10 @@ class ContactsController extends Controller
             'name' => $name,
             'subject' => $subject,
             'email' => $email,
-            'message' => $message
+            'message' => $message,
+            'file_name' => $fileName,
+            'file_size' => $fileSize,
+            'file_type' => $fileType
 
         ]);
 

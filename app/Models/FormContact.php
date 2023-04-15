@@ -13,6 +13,9 @@ class FormContact extends Model
         'name',
         'subject',
         'email',
-        'message'
+        'message',
+        'file_name',
+        'file_size',
+        'file_type'
     ];
 }
