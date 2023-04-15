@@ -26,7 +26,7 @@
                             <span class="h4">Product details</span>
                         </div>
                         <div class="card-body">
-                            <form id="form1" class="form-validate" action="{{ route('admin.products.create') }}" method="POST">
+                            <form id="form1" enctype="multipart/form-data" class="form-validate" action="{{ route('admin.products.create') }}" method="POST">
                                 @csrf
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
@@ -86,9 +86,10 @@
 {{--                                    </div>--}}
                                     <div class="form-group">
                                         <label class="form-label w-100">Image</label>
-                                        <input type="file" value="{{ old('image') }}" name="image">
+                                        <input multiple type="file" value="{{ old('image') }}" name="image[]">
                                     </div>
                                 </div>
+                                <h1>{{json_encode($errors->all())}}</h1>
                                 <button type="submit" class="btn m-t-30 mt-3">Submit</button>
                             </form>
                         </div>

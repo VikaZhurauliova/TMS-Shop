@@ -7,6 +7,7 @@ use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductImage;
 use App\Models\Tag;
 use App\Services\ProductService;
 use Illuminate\Http\Request;
@@ -43,11 +44,25 @@ class ProductController extends Controller
 
     public function store(CreateProductRequest $request)
     {
-        Product::query()->create($request->validated());
+        $product = Product::query()->create($request->validated());
+        $images = $request->file('image');
+
+        foreach ($images as $image)
+        {
+            ProductImage::query()->create([
+                'image' => $image->getClientOriginalName(),
+                'product_id' => $product->id,
+                'is_active' => 1
+            ]);
+
+        $image->storeAs('/products', $image->getClientOriginalName(), 'public');
+
+        }
         session()->flash('success', 'Product has been successfully created');
 
         return redirect()->route('admin.products.index');
     }
+
 
     public function edit(Product $product, Tag $tag)
     {
@@ -90,6 +105,7 @@ class ProductController extends Controller
     {
         $this->productService->importExcel(Product::all());
     }
+
 
 
 }
