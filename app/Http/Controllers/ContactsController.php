@@ -21,6 +21,9 @@ class ContactsController extends Controller
 
     public function sendContacts(Request $request)
     {
+        $file = $request->file('file');
+        $fileName = $file->getClientOriginalName();
+        $file->storeAs('/contacts',$fileName);
 
         $name = $request->input('name');
         $subject = $request->input('subject');

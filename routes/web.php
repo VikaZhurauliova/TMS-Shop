@@ -143,3 +143,5 @@ Route::post('/forgot-password', [ForgetPasswordController::class, 'sendResetLink
 Route::get('/reset-password/{token}', [ForgetPasswordController::class, 'resetPasswordView'])->middleware('guest')->name('password.reset');
 Route::post('/reset-password', [ForgetPasswordController::class, 'resetPassword'])->middleware('guest')->name('password.update');
 Route::get('/checkout', [MainController::class, 'checkout'])->name('checkout')->middleware('auth');
+
+Route::get('/order/create', [\App\Http\Controllers\OrderCreateController::class, 'orderCreate'])->name('order.create');

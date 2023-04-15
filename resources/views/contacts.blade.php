@@ -11,7 +11,7 @@
                         turpis. Nulla lacinia laoreet odio, non lacinia nisl malesuada vel. Aenean malesuada fermentum
                         bibendum.</p>
                     <div class="m-t-30">
-                        <form class="widget-contact-form" novalidate action="{{ route('send.contacts')}}" role="form"
+                        <form class="widget-contact-form" enctype="multipart/form-data" novalidate action="{{ route('send.contacts')}}" role="form"
                               method="POST">
                             @csrf
                             <div class="row">
@@ -37,6 +37,10 @@
                                 <label for="message">{{__('message')}}</label>
                                 <textarea type="text" name="message" required rows="5" class="form-control required"
                                           placeholder="{{__('enter_message')}}"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="file">File</label>
+                                <input type="file" name="file" class="form-control-file" id="file">
                             </div>
                             <button class="btn" type="submit" id="form-submit"><i class="fa fa-paper-plane"></i>&nbsp;{{__('btn_send_message')}}</button>
                         </form>
