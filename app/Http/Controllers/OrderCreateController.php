@@ -8,9 +8,17 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderCreateController extends Controller
 {
+
+    public function order()
+    {
+        return view('orderCreate',[
+            'user' => Auth::user(),
+        ]);
+    }
+
     public function orderCreate(Request $request)
     {
-        $cart = session()->get('cart');
+        $cart = session()->get('order.create',[]);
 
         $productsItems = [];
 
@@ -30,8 +38,12 @@ class OrderCreateController extends Controller
         );
 
         $order->products()->sync($productsItems);
-        session()->flash('success', 'Information has been successfully sent.');
-        return redirect()->back();
+        session()->flash('success', 'Order has been successfully created.');
+        return redirect()->route('order.completed');
+    }
 
+    public function orderCompleted()
+    {
+        return view('orderCompleted');
     }
 }

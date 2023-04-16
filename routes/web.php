@@ -7,6 +7,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\ForgetPasswordController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\OrderCreateController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\WishlistController;
@@ -142,6 +143,11 @@ Route::get('/forget-password', [ForgetPasswordController::class, 'forgotPassword
 Route::post('/forgot-password', [ForgetPasswordController::class, 'sendResetLink'])->middleware('guest')->name('password.email');
 Route::get('/reset-password/{token}', [ForgetPasswordController::class, 'resetPasswordView'])->middleware('guest')->name('password.reset');
 Route::post('/reset-password', [ForgetPasswordController::class, 'resetPassword'])->middleware('guest')->name('password.update');
-Route::get('/checkout', [MainController::class, 'checkout'])->name('checkout')->middleware('auth');
 
-Route::get('/order/create', [\App\Http\Controllers\OrderCreateController::class, 'orderCreate'])->name('order.create');
+
+Route::group(['prefix' => '/order', 'as' => 'order.'], function () {
+    Route::get('/', [OrderCreateController::class, 'order'])->name('get');
+    Route::post('/order', [OrderCreateController::class, 'orderCreate'])->name('create');
+    Route::get('/completed', [OrderCreateController::class, 'orderCompleted'])->name('completed');
+});
+

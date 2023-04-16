@@ -85,7 +85,7 @@
                                 </table>
                             </div>
                             @auth
-                                <a href="{{ route('checkout') }}" class="btn icon-left float-right"><span>Proceed to Checkout</span></a>
+                                <a href="{{ route('order.get') }}" class="btn icon-left float-right"><span>Proceed to Checkout</span></a>
                             @endauth
                             @guest
                                 <a href="#" data-target="#modal-checkout" data-toggle="modal" class="btn icon-left float-right"><span>Proceed to Checkout</span></a>
