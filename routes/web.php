@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactsController;
@@ -126,6 +127,13 @@ Route::group(['prefix' => '/admin', 'middleware' => 'admin', 'as' => 'admin.'], 
         Route::get('/', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('index');
 
         Route::get('/delete/{user}', [\App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('delete');
+    });
+
+    Route::group(['prefix' => '/orders', 'as' => 'orders.'], function () {
+//        Route::get('/export-csv', [\App\Http\Controllers\Admin\UserController::class, 'exportCsv'])->name('export.csv');
+//        Route::get('/export-excel', [\App\Http\Controllers\Admin\UserController::class, 'exportExcel'])->name('export.excel');
+
+        Route::get('/', [OrderController::class, 'index'])->name('index');
     });
 
 });

@@ -48,6 +48,11 @@
                                 <div class="cb-title"><a href="{{ route('admin.users.index') }}">Users</a></div>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="p-cb cb-text">
+                                <div class="cb-title"><a href="{{ route('admin.orders.index') }}">Orders</a></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- end: content -->
