@@ -159,3 +159,8 @@ Route::group(['prefix' => '/order', 'as' => 'order.'], function () {
     Route::get('/completed', [OrderCreateController::class, 'orderCompleted'])->name('completed');
 });
 
+Route::get('/google/auth/redirect', [AuthController::class, 'googleRedirect'])->name('google.redirect');
+Route::get('/google/auth/callback', [AuthController::class, 'googleCallback'])->name('google.callback');
+
+
+
