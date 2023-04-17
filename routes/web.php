@@ -162,5 +162,5 @@ Route::group(['prefix' => '/order', 'as' => 'order.'], function () {
 Route::get('/google/auth/redirect', [AuthController::class, 'googleRedirect'])->name('google.redirect');
 Route::get('/google/auth/callback', [AuthController::class, 'googleCallback'])->name('google.callback');
 
-
-
+Route::get('/github/auth/redirect', [AuthController::class, 'githubRedirect'])->name('github.redirect');
+Route::get('/github/auth/callback', [AuthController::class, 'githubCallback'])->name('github.callback');
