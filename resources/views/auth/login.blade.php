@@ -33,8 +33,8 @@
                                         </label>
                                     </div>
                                 </div>
-                                    <a id="btn-search" href="{{ route('github.redirect') }}"> <i class="icon-github"></i></a>
-                                    <a id="btn-search" href="{{ route('google.redirect') }}"> <i class="icon-globe"></i></a>
+                                    <a id="btn-search" href="{{ route('github.redirect') }}"> <i class="fa-github fab"></i></a>
+                                    <a id="btn-search" href="{{ route('google.redirect') }}"> <i class="fa-google fab"></i></a>
                                 <div class="text-left form-group">
                                     <button type="submit" class="btn">{{__('login')}}</button>
                                 </div>

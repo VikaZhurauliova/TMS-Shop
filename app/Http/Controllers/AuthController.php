@@ -8,6 +8,7 @@ use App\Http\Requests\RegisterRequest;
 use App\Mail\SuccessRegister;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\UserInformation;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -92,13 +93,23 @@ class AuthController extends Controller
     public function googleCallback()
     {
         $googleUser = Socialite::driver('google')->user();
-        $googleEmail = $googleUser->getEmail();
-        $user = User::query()->where('email', $googleEmail)->first();
+        $user = User::query()->where('provider', 'google')->where('social_id', $googleUser->getId())->first();
 
         if(!$user){
-            $user = User::create([
-                'email' => $googleEmail,
+            $user = User::query()->create([
                 'name' => $googleUser->getName(),
+                'provider' => 'google',
+                'social_id' => $googleUser->getId(),
+
+            ]);
+        }
+
+        $userInformation = $user->information;
+        if(!$userInformation){
+            UserInformation::query()->create([
+                'user_id' => $user->id,
+                'first_name' => $googleUser->user['given_name'],
+                'last_name' => $googleUser->user['family_name'],
             ]);
         }
 
@@ -114,13 +125,22 @@ class AuthController extends Controller
     public function githubCallback()
     {
         $githubUser = Socialite::driver('github')->user();
-        $githubEmail = $githubUser->getEmail();
-        $user = User::query()->where('email', $githubEmail)->first();
+        $user = User::query()->where('provider', 'github')->where('social_id',$githubUser->getId())->first();
 
         if(!$user){
-            $user = User::create([
-                'email' => $githubEmail,
+            $user = User::query()->create([
                 'name' => $githubUser->getName(),
+                'provider' => 'github',
+                'social_id' => $githubUser->getId(),
+            ]);
+        }
+
+        $userInformation = $user->information;
+        if(!$userInformation){
+            UserInformation::query()->create([
+                'user_id' => $user->id,
+                'first_name' => $githubUser->user['name'],
+                'city' => $githubUser->user['location'],
             ]);
         }
 
