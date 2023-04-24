@@ -9,6 +9,8 @@ use App\Mail\SuccessRegister;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\UserInformation;
+use App\Services\AccountService;
+use App\Services\AuthService;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -147,4 +149,5 @@ class AuthController extends Controller
         Auth::login($user);
         return redirect()->route('main');
     }
+
 }

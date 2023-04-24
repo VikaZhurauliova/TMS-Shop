@@ -42,4 +42,9 @@ return [
         'client_secret' => env('GITHUB_CLIENT_SECRET'),
         'redirect' => env('GITHUB_CALLBACK_URL'),
     ],
+
+    'stripe' => [
+        'public_key' => env('STRIPE_PX'),
+        'secret_key' => env('STRIPE_SK'),
+    ],
 ];

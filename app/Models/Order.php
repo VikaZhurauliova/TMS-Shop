@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Auth;
 
 class Order extends Model
@@ -25,8 +26,8 @@ class Order extends Model
         return $this->belongsToMany(Product::class);
     }
 
-//    public function orderProduct(): BelongsToMany
-//    {
-//        return $this->belongsToMany(OrderProduct::class);
-//    }
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class);
+    }
 }

@@ -164,3 +164,6 @@ Route::get('/google/auth/callback', [AuthController::class, 'googleCallback'])->
 
 Route::get('/github/auth/redirect', [AuthController::class, 'githubRedirect'])->name('github.redirect');
 Route::get('/github/auth/callback', [AuthController::class, 'githubCallback'])->name('github.callback');
+
+Route::get('/order/{order}/payment/create', [OrderCreateController::class, 'createPayment'])->middleware('auth')->name('payment.create');
+Route::get('/order/payment/success/{hash}', [OrderCreateController::class, 'callbackPayment'])->name('payment.callback');

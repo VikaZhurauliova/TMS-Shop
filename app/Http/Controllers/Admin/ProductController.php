@@ -27,7 +27,6 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::query()->orderByDesc('created_at')->paginate(10);
-
         return view('admin.products.index', [
             'products' => $products
         ]);

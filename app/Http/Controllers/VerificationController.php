@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class VerificationController extends Controller
 {
     public function  view(){
-        return view('quth.verify-email');
+        return view('auth.verify-email');
     }
 
     public function handle(EmailVerificationRequest $request)
