@@ -9,6 +9,7 @@ use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\ForgetPasswordController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\OrderCreateController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\WishlistController;
@@ -165,5 +166,5 @@ Route::get('/google/auth/callback', [AuthController::class, 'googleCallback'])->
 Route::get('/github/auth/redirect', [AuthController::class, 'githubRedirect'])->name('github.redirect');
 Route::get('/github/auth/callback', [AuthController::class, 'githubCallback'])->name('github.callback');
 
-Route::get('/order/{order}/payment/create', [OrderCreateController::class, 'createPayment'])->middleware('auth')->name('payment.create');
-Route::get('/order/payment/success/{hash}', [OrderCreateController::class, 'callbackPayment'])->name('payment.callback');
+Route::get('/order/{order}/payment/redirect', [PaymentController::class, 'redirect'])->name('payment.redirect');
+Route::get('/order/payment/{hash}', [PaymentController::class, 'callback'])->name('payment.callback');

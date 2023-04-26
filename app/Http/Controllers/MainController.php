@@ -11,6 +11,7 @@ class MainController extends Controller
 {
     public function main()
     {
+
         $categories = Category::all();
         $banners = Banner::where('is_active', 1)->get();
         return view('main', [

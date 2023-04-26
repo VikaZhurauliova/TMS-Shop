@@ -74,9 +74,8 @@ class OrderCreateController extends Controller
             'success_url' => route('payment.callback', ['hash'=>$hash]),
             'line_items' => $items,
             'mode' => 'payment',
-//            'status' => $session->status,
         ]);
-
+dd($result);
         Payment::query()->create([
            'status' => $result->status,
             'order_id' => $order->id,
@@ -89,12 +88,10 @@ class OrderCreateController extends Controller
 
     public function callbackPayment(string $hash)
     {
-//        $status = $session->status;
         $payment = Payment::query()->where('hash', $hash )->first();
         $stripe = new StripeClient(config('services.stripe.secret_key'));
         $result = $stripe->checkout->sessions->retrieve(
             $payment->session_id,
-
         );
         dd($result);
     }
