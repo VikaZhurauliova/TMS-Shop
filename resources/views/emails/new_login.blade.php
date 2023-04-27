@@ -44,7 +44,7 @@
     <h1>Hi, {{$user->name}}</h1>
     <p>You have logged in from browser {{$agent->browser()}} </p>
     <p>Operating system {{$agent->platform()}} </p>
-    <p>IP address {{$_SERVER['REMOTE_ADDR']}} </p>
+    <p>IP address {{$_SERVER['REMOTE_ADDR'] ?? ''}} </p>
 </div>
 </body>
 </html>

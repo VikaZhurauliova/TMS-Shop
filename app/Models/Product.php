@@ -20,7 +20,8 @@ class Product extends Model
         'price',
         'sale_price',
         'category_id',
-        'is_active'
+        'is_active',
+        'image'
     ];
 
     public function images(): HasMany

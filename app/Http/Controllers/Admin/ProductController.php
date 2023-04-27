@@ -55,8 +55,7 @@ class ProductController extends Controller
                 'is_active' => 1
             ]);
 
-        $image->storeAs('/products', $image->getClientOriginalName(), 'public');
-
+            $image->storeAs('/products', $image->getClientOriginalName(), 'public');
         }
         session()->flash('success', 'Product has been successfully created');
 

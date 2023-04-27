@@ -26,7 +26,7 @@ class SaveLoginInfo
         $agent = new Agent();
 
         UserLogin::query()->create([
-            'ip' => $_SERVER['REMOTE_ADDR'],
+            'ip' =>$_SERVER['REMOTE_ADDR'] ?? '' ,
             'user_id' => $event->user->id,
             'os' => $agent->platform(),
             'browser' => $agent->browser(),

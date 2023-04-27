@@ -37,7 +37,7 @@ class PaymentService
         foreach ($order->products as $product) {
             $price = $product->sale_price ? $product->sale_price : $product->price;
             $products[] = [
-                'quantity' => 1,
+                'quantity' => $product->pivot->quantity,
                 'price_data' => [
                     'currency' => 'USD',
                     'product_data' => [
