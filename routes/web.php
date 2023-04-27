@@ -133,14 +133,16 @@ Route::group(['prefix' => '/admin', 'middleware' => 'admin', 'as' => 'admin.'], 
     Route::group(['prefix' => '/orders', 'as' => 'orders.'], function () {
 //        Route::get('/export-csv', [\App\Http\Controllers\Admin\UserController::class, 'exportCsv'])->name('export.csv');
 //        Route::get('/export-excel', [\App\Http\Controllers\Admin\UserController::class, 'exportExcel'])->name('export.excel');
-
         Route::get('/', [OrderController::class, 'index'])->name('index');
     });
 
 });
 
-Route::get('/account', [AccountController::class, 'account'])->name('account.show');
-Route::post('/account', [AccountController::class, 'updateAccount'])->name('account.update');
+Route::group(['prefix' => '/account', 'controller' => AccountController::class, 'middleware' => 'auth'], function () {
+    Route::get('/', 'account')->name('account.show');
+    Route::post('/', 'updateAccount')->name('account.update');
+    Route::post('/changePassword', 'changePassword')->name('account.changePassword');
+});
 
 Route::get('/contacts', [ContactsController::class, 'contacts'])->name('contacts');
 Route::post('/contacts', [ContactsController::class, 'sendContacts'])->name('send.contacts');

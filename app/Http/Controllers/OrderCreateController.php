@@ -75,7 +75,7 @@ class OrderCreateController extends Controller
             'line_items' => $items,
             'mode' => 'payment',
         ]);
-dd($result);
+
         Payment::query()->create([
            'status' => $result->status,
             'order_id' => $order->id,

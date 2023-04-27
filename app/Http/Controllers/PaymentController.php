@@ -16,10 +16,11 @@ class PaymentController extends Controller
         $this->paymentService = $paymentService;
     }
 
+
     public function redirect(Order $order)
     {
-        $successPayment = $order->payments()->where('status', 'complete')->get();
-
+//        $successPayment = $order->payments()->where('status', 'complete')->get();
+//
 //        if ($successPayment) {
 //            return redirect()->route('cart.get')->with('success', 'Already paid');
 //        }
